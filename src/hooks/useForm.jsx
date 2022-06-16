@@ -1,23 +1,30 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
-export default function useForm(props) {
-  const { initValues, validator } = props;
+export default function useForm({ initValues, validator, inputRegex }) {
   const [values, setValues] = useState(initValues);
-  const { error } = validator(values);
+  const [errors, setErrors] = useState({});
+  const isAllValid = Object.values(errors).every(v => v);
+
+  useEffect(() => {
+    setErrors(validator(values, inputRegex));
+  }, [values]);
+
   const valuesChangeHandler = useCallback(
     e => {
       const { name, value } = e.target;
-      setValues({
+      const newData = {
         ...values,
         [name]: value,
-      });
-      validator(values);
+      };
+      setValues(newData);
     },
-    [validator, values],
+    [values],
   );
+
   return {
     values,
     valuesChangeHandler,
-    error,
+    errors,
+    isAllValid,
   };
 }
