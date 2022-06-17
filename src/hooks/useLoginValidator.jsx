@@ -6,7 +6,7 @@ import { validator } from '../util/validator';
 const VALIDATE_EMAIL = Symbol();
 const VALIDATE_PW = Symbol();
 
-const initialErrorState = {
+const initialValidState = {
   email: false,
   pw: false,
 };
@@ -25,11 +25,11 @@ const validateReducer = (state, { type, value }) => {
 export default () => {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
-  const [errorState, dispatchValidate] = useReducer(
+  const [validState, dispatchValidate] = useReducer(
     validateReducer,
-    initialErrorState,
+    initialValidState,
   );
-  const isSubmit = errorState.email && errorState.pw;
+  const isSubmit = validState.email && validState.pw;
 
   useEffect(() => {
     const isValidEmail = email !== '' && validator(email, REGEX_EMAIL);
@@ -44,7 +44,7 @@ export default () => {
         name="email"
         value={email}
         placeholder="전화번호, 사용자 이름 또는 이메일"
-        error={errorState.email}
+        error={email !== '' && !validState.email}
         onChange={({ target: { value } }) => setEmail(value)}
       />
       <ValidatorInput
@@ -52,7 +52,7 @@ export default () => {
         value={pw}
         type="password"
         placeholder="비밀번호"
-        error={errorState.pw}
+        error={pw !== '' && !validState.pw}
         onChange={({ target: { value } }) => setPw(value)}
       />
     </>
