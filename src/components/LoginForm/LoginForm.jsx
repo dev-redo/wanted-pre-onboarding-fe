@@ -1,45 +1,36 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import Input from '../common/Input';
 
 export default function LoginForm({ children, ...props }) {
   return <S.Container {...props}>{children}</S.Container>;
 }
 
 LoginForm.Input = function LoginInput({ children, ...props }) {
-  return (
-    <S.InputWrap {...props}>
-      <Input
-        name="email"
-        placeholder="전화번호, 사용자 이름 또는 이메일"
-        {...props}
-      />
-      <Input name="password" placeholder="비밀번호" {...props} />
-    </S.InputWrap>
-  );
+  return <S.InputWrap {...props}>{props.renderInputs()}</S.InputWrap>;
 };
 
 LoginForm.Button = function LoginButton({ children, ...props }) {
-  return <S.Button disabled={!props.isAllValid}>{children}</S.Button>;
+  return <S.Button disabled={!props.isSubmit}>{children}</S.Button>;
 };
 
 const S = {};
 
-S.Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 45rem;
+S.Container = styled.form`
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 S.InputWrap = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 `;
 
 S.Button = styled.button`
   cursor: pointer;
+  width: 100%;
   background-color: #0195f7;
   &:disabled {
     cursor: default;
