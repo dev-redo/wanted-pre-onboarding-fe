@@ -18,6 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Base = styled(Container)`
+  min-height: 100%;
   display: flex;
   background-color: white;
   border: 1px solid #e4e4e4;
