@@ -7,6 +7,7 @@ export default function LoginFormLayout() {
   return (
     <>
       <LoginForm>
+        <LoginForm.Img />
         <LoginForm.Input renderInputs={renderInputs} />
         <LoginForm.Button isSubmit={isSubmit}>로그인</LoginForm.Button>
       </LoginForm>
