@@ -28,15 +28,20 @@ S.Container = styled.div`
   top: 0;
   z-index: 100;
   background-color: white;
-  @media (max-width: 1025px) {
+  @media (max-width: 1024px) {
     padding: 0rem 2rem;
+  }
+  @media (max-width: 320px) {
+    padding: 0rem 0.5rem;
   }
   outline: 1px solid #e4e4e4;
 `;
 
 S.Img = styled.img`
   width: 6rem;
-  height: 2.5rem;
+  @media (max-width: 320px) {
+    width: 5rem;
+  }
 `;
 
 S.Input = styled.input`

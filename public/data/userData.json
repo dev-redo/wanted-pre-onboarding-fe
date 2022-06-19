@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "userEmail": "test1@naver.com",
+      "userPassword": "AbcdEf123!"
+    },
+    {
+      "userEmail": "test2@naver.com",
+      "userPassword": "AbcdEf123?"
+    },
+    {
+      "userEmail": "test2@naver.com",
+      "userPassword": "AbcdEf123!!"
+    },
+    {
+      "userEmail": "test3@naver.com",
+      "userPassword": "AbcdEf123??"
+    },
+    {
+      "userEmail": "test4@naver.com",
+      "userPassword": "AbcdEf123!!!"
+    },
+    {
+      "userEmail": "test5@naver.com",
+      "userPassword": "AbcdEf123???"
+    }
+  ]
+}
