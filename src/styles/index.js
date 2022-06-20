@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 export const BackGround = styled.div`
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   background-color: #fafafa;
 `;
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
   max-width: 45rem;
   position: relative;
   margin: 0 auto;
@@ -18,7 +17,6 @@ export const Container = styled.div`
 `;
 
 export const Base = styled(Container)`
-  min-height: 100%;
   display: flex;
   background-color: white;
   border: 1px solid #e4e4e4;
