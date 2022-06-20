@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { validator } from '../../lib/util/validator';
 
@@ -27,10 +27,13 @@ export default function Form({ fieldData, submitCallback }) {
     );
   });
 
-  const submitHandler = e => {
-    e.preventDefault();
-    submitCallback(isSubmit, inputValues);
-  };
+  const submitHandler = useCallback(
+    e => {
+      e.preventDefault();
+      submitCallback(isSubmit, inputValues);
+    },
+    [inputValues],
+  );
 
   return (
     <>
