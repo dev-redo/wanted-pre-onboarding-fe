@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-export default function Header({ children, ...props }) {
+export default function Gnb({ children, ...props }) {
   return <S.Container {...props}>{children}</S.Container>;
 }
 
-Header.Img = function HeaderImg() {
+Gnb.Img = function GnbImg() {
   return <S.Img src={require('../../../assets/image/Instargram-logo.png')} />;
 };
 
-Header.Input = function HeaderInput({ children, ...props }) {
+Gnb.Input = function GnbInput({ children, ...props }) {
   return <S.Input placeholder="검색" {...props} />;
 };
 

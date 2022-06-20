@@ -1,13 +1,13 @@
 import React from 'react';
-import GlobalHeader from './Header';
-import { Base, BackGround } from '../../styles';
+import Gnb from './Gnb';
+import { BackGround } from '../../styles';
 
 function GlobalLayout({ children, ...props }) {
   return (
     <>
       <BackGround>
-        <GlobalHeader />
-        <Base {...props}>{children}</Base>
+        <Gnb />
+        {children}
       </BackGround>
     </>
   );
