@@ -16,10 +16,9 @@ export default function LoginFormLayout() {
     { name: 'password', type: 'password', regex: REGEX_PW },
   ];
 
-  const loginCallback = (isValid, inputValues) => {
+  const loginCallback = async (isValid, inputValues) => {
     if (!isValid) return;
-
-    const isUserExist = findUser(inputValues);
+    const isUserExist = await findUser(inputValues);
     if (!isUserExist) {
       alert('아이디 또는 비밀번호를 잘못 입력하셨습니다!');
       return;

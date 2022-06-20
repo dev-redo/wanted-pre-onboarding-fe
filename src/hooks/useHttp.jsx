@@ -1,56 +1,20 @@
-import { useReducer, useCallback } from 'react';
+/**
+ * @param {url, method, headers, body} reqConfig
+ * @return {object}
+ */
+export default async function useHttp(reqConfig) {
+  const { url, method, headers, body } = reqConfig;
 
-function httpReducer(state, { type }) {
-  if (type === 'SEND') {
-    return {
-      data: null,
-      error: null,
-      status: 'pending',
-    };
-  }
-  if (type === 'SUCCESS') {
-    return {
-      data: action.payload,
-      error: null,
-      status: 'completed',
-    };
-  }
-
-  if (type === 'ERROR') {
-    return {
-      data: null,
-      error: action.errorMessage,
-      status: 'completed',
-    };
-  }
-  return state;
-}
-
-export default function useHttp(requestFunction, startWithPending = false) {
-  const [httpState, dispatch] = useReducer(httpReducer, {
-    status: startWithPending ? 'pending' : null,
-    data: null,
-    error: null,
+  const res = await fetch(url, {
+    method: method || 'GET',
+    headers: headers || {},
+    body: body ? JSON.stringify(body) : null,
   });
 
-  const sendRequest = useCallback(
-    async function (requestData) {
-      dispatch({ type: 'SEND' });
-      try {
-        const responseData = await requestFunction(requestData);
-        dispatch({ type: 'SUCCESS', payload: responseData });
-      } catch (error) {
-        dispatch({
-          type: 'ERROR',
-          errorMessage: error.message || 'Something went wrong!',
-        });
-      }
-    },
-    [requestFunction],
-  );
+  if (!res.ok) {
+    throw new Error('Failed to request data');
+  }
 
-  return {
-    sendRequest,
-    ...httpState,
-  };
+  const payload = await res.json();
+  return payload;
 }

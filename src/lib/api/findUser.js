@@ -1,12 +1,14 @@
-// TODO: public 경로 설정
-import userData from '../../../public/data/userData.json';
+import { getUserList } from './getUserList';
 
-export default function findUser([email, password]) {
-  const isUserExist = userData['data'].includes(
-    ({ userEmail, userPassword }) => {
-      return email === userEmail && password === userPassword;
-    },
-  );
+/**
+ * @param {email, password} inputValues
+ * @return {boolean}
+ */
+export async function findUser({ email, password }) {
+  const userList = await getUserList('./data/userData.json');
+  const isUserExist = userList['data'].find(({ userEmail, userPassword }) => {
+    return email === userEmail && password === userPassword;
+  });
 
   return isUserExist;
 }

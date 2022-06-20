@@ -21,7 +21,7 @@ export default function Form({ fieldData, submitCallback }) {
         type={type}
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
-        error={isValidated.toString()}
+        validated={isValidated.toString()}
       />
     );
   });
@@ -47,7 +47,8 @@ S.Input = styled.input`
   width: 100%;
   height: 2.5rem;
   background-color: #fafafa;
-  border: 1px solid ${({ error }) => (error === 'false' ? '#dbdbdb' : 'red')};
+  border: 1px solid
+    ${({ validated }) => (validated === 'true' ? '#dbdbdb' : 'red')};
   border-radius: 5px;
   padding-left: 2rem;
   font-size: 1.2rem;
