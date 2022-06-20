@@ -4,7 +4,7 @@ import { validator } from '../../lib/util/validator';
 
 export default function Form({ fieldData, submitCallback }) {
   let isSubmit = true;
-  const inputValues = [];
+  const inputValues = {};
 
   const FormInputs = fieldData.map((data, idx) => {
     const { name, type, regex } = data;
