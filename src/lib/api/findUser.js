@@ -5,10 +5,12 @@ import { getUserList } from './getUserList';
  * @return {boolean}
  */
 export async function findUser({ email, password }) {
-  const userList = await getUserList('./data/userData.json');
-  const isUserExist = userList['data'].find(({ userEmail, userPassword }) => {
-    return email === userEmail && password === userPassword;
-  });
+  const registerUserList = await getUserList('./data/registerUserList.json');
+  const isUserExist = registerUserList['data'].find(
+    ({ userEmail, userPassword }) => {
+      return email === userEmail && password === userPassword;
+    },
+  );
 
   return isUserExist;
 }
