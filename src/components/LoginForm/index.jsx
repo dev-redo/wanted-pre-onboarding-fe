@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { isAuthorized } from '../../modules/atoms/auth';
-import { findUser } from '../../lib/api/findUser';
+import { findUser } from '../../lib/api/auth/findUser';
 import { REGEX_EMAIL, REGEX_PW } from '../../constants/regex';
 import LoginForm from './LoginForm';
 import Form from '../common/Form';

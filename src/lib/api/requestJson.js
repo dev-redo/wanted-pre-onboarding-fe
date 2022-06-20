@@ -1,6 +1,6 @@
 import useHttp from '../../hooks/useHttp';
 
-export function getRegisterUserList(path) {
+export function requestJson(path) {
   return useHttp({
     url: path,
     headers: {
