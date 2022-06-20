@@ -6,7 +6,7 @@ export default function Header({ children, ...props }) {
 }
 
 Header.Img = function HeaderImg() {
-  return <S.Img src={require('../../../assets/image/Instargram-text.png')} />;
+  return <S.Img src={require('../../../assets/image/Instargram-logo.png')} />;
 };
 
 Header.Input = function HeaderInput({ children, ...props }) {

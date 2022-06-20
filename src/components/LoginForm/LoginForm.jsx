@@ -6,7 +6,7 @@ export default function LoginForm({ children, ...props }) {
 }
 
 LoginForm.Img = function LoginImg() {
-  return <S.Img src={require('../../assets/image/Instargram-text.png')} />;
+  return <S.Img src={require('../../assets/image/Instargram-logo.png')} />;
 };
 
 const S = {};
