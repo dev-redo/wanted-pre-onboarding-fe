@@ -7,7 +7,7 @@ export default function Form({ fieldData, submitCallback }) {
   const inputValues = {};
 
   const FormInputs = fieldData.map((data, idx) => {
-    const { name, type, regex } = data;
+    const { name, placeholder, type, regex } = data;
     const [value, setValue] = useState('');
     inputValues[name] = value;
 
@@ -18,10 +18,11 @@ export default function Form({ fieldData, submitCallback }) {
       <S.Input
         key={idx}
         name={name}
+        placeholder={placeholder}
         type={type}
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
-        validated={isValidated.toString()}
+        validated={(value === '' || isValidated).toString()}
       />
     );
   });
