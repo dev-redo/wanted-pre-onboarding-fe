@@ -13,8 +13,9 @@ function Loader() {
 export default React.memo(Loader);
 
 const S = {};
+
 S.Loader = styled.div`
   display: grid;
   place-content: center;
-  height: 100vh;
+  height: 100%;
 `;
