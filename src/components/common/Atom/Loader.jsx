@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Spinner from '../../assets/icon/Spinner';
+import Spinner from '../../../assets/icon/Spinner';
 
 export default function Loader() {
   return (
@@ -12,8 +12,7 @@ export default function Loader() {
 
 const S = {};
 S.Loader = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: grid;
+  place-content: center;
+  height: 100vh;
 `;
