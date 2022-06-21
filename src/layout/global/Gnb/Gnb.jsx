@@ -15,7 +15,7 @@ Gnb.Input = function GnbInput({ children, ...props }) {
 
 const S = {};
 
-S.Container = styled.div`
+S.Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
