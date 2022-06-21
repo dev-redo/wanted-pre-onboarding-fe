@@ -8,6 +8,9 @@ const GlobalStyles = createGlobalStyle`
    outline:none;
    border:none;
  }
+ html, body {
+    height: 100%;
+ }
 `;
 
 export default GlobalStyles;
