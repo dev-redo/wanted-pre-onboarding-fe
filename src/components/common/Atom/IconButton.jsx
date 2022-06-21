@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function IconButton({ children, ...props }) {
+function IconButton({ children, ...props }) {
   return <S.Button {...props}>{children}</S.Button>;
 }
+
+export default React.memo(IconButton);
 
 const S = {};
 S.Button = styled.button`

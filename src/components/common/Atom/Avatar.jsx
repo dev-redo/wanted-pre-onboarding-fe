@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Avatar({ user, width, height }) {
+function Avatar({ user, width, height }) {
   return (
     <S.Avatar
       src={user.avatarUrl}
@@ -11,6 +11,8 @@ export default function Avatar({ user, width, height }) {
     />
   );
 }
+
+export default React.memo(Avatar);
 
 const S = {};
 S.Avatar = styled.img`
