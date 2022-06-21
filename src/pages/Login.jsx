@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 import { isAuthorized } from '../modules/atoms/auth';
 import { Base, BackGround } from '../styles/index';
 import LoginFormLayout from '../components/LoginForm';
@@ -12,10 +13,17 @@ export default function Login() {
     <>
       {auth && <Navigate to="/" replace={true} />}
       <BackGround>
-        <Base>
+        <S.Container>
           <LoginFormLayout />
-        </Base>
+        </S.Container>
       </BackGround>
     </>
   );
 }
+
+const S = {};
+S.Container = styled(Base)`
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
