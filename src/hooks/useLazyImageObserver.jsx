@@ -1,6 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
+/**
+ * @param {src}
+ * @return {boolean, src, ref}
+ */
 export function useLazyImageObserver({ src }) {
+  const [isLoad, setIsLoad] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const imageRef = useRef(null);
 
@@ -11,11 +16,15 @@ export function useLazyImageObserver({ src }) {
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
+            setIsLoad(true);
             setImageSrc(src);
             observer.unobserve(imageRef.current);
           }
         },
-        { threshold: [0.25] },
+        {
+          rootMargin: '10%',
+          threshold: [0.25],
+        },
       );
 
       observer.observe(imageRef.current);
@@ -26,5 +35,5 @@ export function useLazyImageObserver({ src }) {
     };
   }, [imageRef, imageSrc, src]);
 
-  return { imageSrc, imageRef };
+  return { isLoad, imageSrc, imageRef };
 }
