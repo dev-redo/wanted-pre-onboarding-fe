@@ -8,7 +8,7 @@ function Header({ user }) {
   return (
     <S.Header>
       <UserInfo user={user} />
-      <IconButton>
+      <IconButton width="1.5" height="1.5">
         <BsThreeDots />
       </IconButton>
     </S.Header>
