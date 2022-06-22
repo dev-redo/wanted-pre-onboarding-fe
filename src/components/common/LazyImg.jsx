@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useLazyImageObserver } from '../../../hooks/useLazyImageObserver';
+import { useLazyImageObserver } from '../../hooks/useLazyImageObserver';
 
 function LazyImg({ src, alt }) {
   const { isLoad, imageSrc, imageRef } = useLazyImageObserver({ src });
