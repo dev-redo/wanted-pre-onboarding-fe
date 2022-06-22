@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Avatar from '../../common/Atom/Avatar';
 
 function UserInfo({ user }) {
   return (
-    <S.Info>
-      <Avatar user={user} width="2" height="2" />
-      <span>{user.name}</span>
-    </S.Info>
+    <Link to="#">
+      <S.Info>
+        <Avatar user={user} width="2" height="2" />
+        <span>{user.name}</span>
+      </S.Info>
+    </Link>
   );
 }
 
