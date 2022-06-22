@@ -2,8 +2,8 @@
  * getAsyncValue
  * @typedef { function }
  * @function getAsyncValue - fetch한 Promise 객체의 result를 반환
- * @param { promise } fetch한 Promise 객체
- * @return { data | error } 성공 시 fetch한 데이터, 실패 시 error 반환
+ * @param { promise } Promise 객체
+ * @return { data } fetch한 데이터
  */
 export const getAsyncValue = promise => {
   let status = 'pending';
