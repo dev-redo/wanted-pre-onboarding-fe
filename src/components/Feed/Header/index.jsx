@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import UserInfo from './UserInfo';
-import IconButton from '../../common/Atom/IconButton';
+import IconButton from '../../common/IconButton';
 import { BsThreeDots } from 'react-icons/bs';
 
 function Header({ user }) {
