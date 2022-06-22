@@ -32,10 +32,6 @@ export default function LoginFormLayout() {
 
     const registerUserList = await useHttp({
       url: './data/registerUserList.json',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
     });
     const isUserExist = await findUser(inputValues, registerUserList);
 
