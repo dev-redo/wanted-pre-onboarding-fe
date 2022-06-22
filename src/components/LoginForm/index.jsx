@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { isAuthorized } from '../../modules/atoms/auth';
+import useHttp from '../../hooks/useHttp';
 import { findUser } from '../../lib/api/auth/findUser';
 import { REGEX_EMAIL, REGEX_PW } from '../../constants/regex';
 import LoginForm from './LoginForm';
@@ -28,7 +29,16 @@ export default function LoginFormLayout() {
 
   const loginCallback = async (isValid, inputValues) => {
     if (!isValid) return;
-    const isUserExist = await findUser(inputValues);
+
+    const registerUserList = await useHttp({
+      url: './data/registerUserList.json',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+    const isUserExist = await findUser(inputValues, registerUserList);
+
     if (!isUserExist) {
       alert('아이디 또는 비밀번호를 잘못 입력하셨습니다!');
       return;
