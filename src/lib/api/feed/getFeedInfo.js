@@ -1,3 +1,5 @@
-import useHttp from '../../../hooks/useHttp';
+import { requestJson } from '../requestJson';
 
-export function getFeedInfo(path) {}
+export async function getFeedInfo() {
+  const feedInfoList = await requestJson('./data/instargramFeedData.json');
+}

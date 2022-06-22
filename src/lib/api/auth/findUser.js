@@ -1,8 +1,11 @@
 import { requestJson } from '../requestJson';
 
 /**
+ * findUser
+ * @typedef {function}
+ * @function findUser - 입력받은 values에 해당하는 사용자가 존재하는지 판별
  * @param {email, password} inputValues
- * @return {boolean}
+ * @return { boolean } 일치하는 사용자가 존재하는지 여부
  */
 export async function findUser({ email, password }) {
   const registerUserList = await requestJson('./data/registerUserList.json');
@@ -12,5 +15,5 @@ export async function findUser({ email, password }) {
     },
   );
 
-  return isUserExist;
+  return Boolean(isUserExist);
 }
