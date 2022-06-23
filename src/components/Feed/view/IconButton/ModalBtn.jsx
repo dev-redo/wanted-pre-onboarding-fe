@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../../common/IconButton';
+import IconButton from '../../../common/IconButton';
 import { BsThreeDots } from 'react-icons/bs';
 
 function ModalBtn({ children, ...props }) {

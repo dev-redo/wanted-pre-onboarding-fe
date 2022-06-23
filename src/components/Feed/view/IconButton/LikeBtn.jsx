@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../../common/IconButton';
+import IconButton from '../../../common/IconButton';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 function Like({ children, ...props }) {

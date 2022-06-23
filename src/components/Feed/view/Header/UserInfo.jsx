@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Avatar from '../../common/Avatar';
+import Avatar from '../../../common/Avatar';
 
 function UserInfo({ user }) {
   return (
@@ -24,7 +24,7 @@ S.Info = styled.section`
   align-items: center;
   gap: 0.5rem;
   span {
-    font-style: bolder;
+    font-weight: bold;
     font-size: 1rem;
   }
 `;

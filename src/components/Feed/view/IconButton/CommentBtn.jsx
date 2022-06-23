@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../../common/IconButton';
+import IconButton from '../../../common/IconButton';
 import { FaRegCommentDots } from 'react-icons/fa';
 
 function Comment({ children, ...props }) {

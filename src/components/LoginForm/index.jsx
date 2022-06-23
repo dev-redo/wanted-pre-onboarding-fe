@@ -6,7 +6,7 @@ import { useUserDispatch } from '../../modules/context/auth';
 import { useNavigate } from 'react-router-dom';
 import useHttp from '../../hooks/useHttp';
 import { findUser } from './domain/findUser';
-import { extractIdFromEmail } from '../../util/extractIdFromEmail';
+import { extractIdFromEmail } from './domain/extractIdFromEmail';
 
 export default function LoginFormLayout() {
   const navigate = useNavigate();

@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import UserInfo from './UserInfo';
-import IconButton from '../../common/IconButton';
-import { BsThreeDots } from 'react-icons/bs';
+import CommentBtn from '../IconButton/CommentBtn';
 
 function Header({ user }) {
   return (
     <S.Header>
       <UserInfo user={user} />
-      <IconButton width="1.5" height="1.5">
-        <BsThreeDots />
-      </IconButton>
+      <CommentBtn />
     </S.Header>
   );
 }

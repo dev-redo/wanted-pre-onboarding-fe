@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../../common/IconButton';
+import IconButton from '../../../common/IconButton';
 import { GrSend } from 'react-icons/gr';
 
 function Send({ children, ...props }) {
