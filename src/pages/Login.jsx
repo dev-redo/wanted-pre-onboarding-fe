@@ -1,17 +1,16 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
-import { isAuthorized } from '../modules/atoms/auth';
-import { Base, BackGround } from '../styles/index';
-import LoginFormLayout from '../components/LoginForm';
 import { Navigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { Base, BackGround } from '../styles/index';
+import { useUserState } from '../modules/context/auth';
+import LoginFormLayout from '../components/LoginForm';
 
 export default function Login() {
-  const auth = useRecoilValue(isAuthorized);
+  const { token } = useUserState();
 
   return (
     <>
-      {auth && <Navigate to="/" replace={true} />}
+      {token && <Navigate to="/" replace={true} />}
       <BackGround>
         <S.Container>
           <LoginFormLayout />

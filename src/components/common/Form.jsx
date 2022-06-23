@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { validator } from '../../lib/util/validator';
+import { validator } from '../../util/validator';
 
 export default function Form({ fieldData, submitCallback }) {
   let isSubmit = true;

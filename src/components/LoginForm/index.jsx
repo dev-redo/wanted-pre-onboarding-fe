@@ -1,18 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { authToken, userInfo } from '../../modules/atoms/auth';
-import useHttp from '../../hooks/useHttp';
-import { findUser } from '../../lib/api/auth/findUser';
 import LoginForm from './LoginForm';
-import Form from '../common/Form';
-
 import { loginField } from '../../constants/fieldData';
+import { useUserDispatch } from '../../modules/context/auth';
+
+import { useNavigate } from 'react-router-dom';
+import useHttp from '../../hooks/useHttp';
+import { findUser } from './domain/findUser';
+import { extractIdFromEmail } from '../../util/extractIdFromEmail';
 
 export default function LoginFormLayout() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useRecoilState(authToken);
-  const [user, setUser] = useRecoilState(userInfo);
+  const dispatch = useUserDispatch();
 
   const loginCallback = async (isValid, inputValues) => {
     if (!isValid) return;
@@ -27,18 +25,19 @@ export default function LoginFormLayout() {
       return;
     }
 
-    setAuth(!auth);
-    localStorage.setItem('authToken', JSON.stringify(!auth));
-    setUser(inputValues.email);
-    localStorage.setItem('userInfo', JSON.stringify(inputValues.email));
+    dispatch({
+      type: 'LOGIN',
+      userId: extractIdFromEmail(inputValues.email),
+    });
 
+    alert('로그인 성공하였습니다.');
     navigate('/', { replace: true });
   };
 
   return (
     <LoginForm>
       <LoginForm.Img />
-      <Form fieldData={loginField} submitCallback={loginCallback} />
+      <LoginForm.Form fieldData={loginField} submitCallback={loginCallback} />
     </LoginForm>
   );
 }

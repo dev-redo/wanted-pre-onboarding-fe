@@ -1,11 +1,10 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { isAuthorized } from '../modules/atoms/auth';
-import GlobalLayout from '../layout/global';
-import { getAsyncValue } from '../lib/api/getAsyncValue';
-import FeedLayout from '../components/Feed';
 import { Navigate } from 'react-router-dom';
 import useHttp from '../hooks/useHttp';
+import { getAsyncValue } from '../util/getAsyncValue';
+import { useUserState } from '../modules/context/auth';
+import GlobalLayout from '../layout/global';
+import FeedLayout from '../components/Feed';
 
 const suspendedFeedData = getAsyncValue(
   useHttp({
@@ -14,13 +13,17 @@ const suspendedFeedData = getAsyncValue(
 );
 
 export default function Home({ children, ...props }) {
-  const auth = useRecoilValue(isAuthorized);
+  const { token } = useUserState();
   const feedData = suspendedFeedData.get().data;
 
   return (
     <>
-      {!auth && <Navigate to="/login" replace={true} />}
-      <GlobalLayout>{JSON.stringify(feedData)}</GlobalLayout>
+      {!token && <Navigate to="/login" replace={true} />}
+      <GlobalLayout>
+        {feedData.map(feed => (
+          <FeedLayout key={feed.id} feed={feed} />
+        ))}
+      </GlobalLayout>
     </>
   );
 }
