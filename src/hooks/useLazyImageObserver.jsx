@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 
 /**
- * @param {src}
+ * useLazyImageObserver
+ * @typedef { function }
+ * @function Intersection Observer를 이용해 레이지 로딩을 구현하는 훅
  * @return {boolean, src, ref}
  */
 export function useLazyImageObserver({ src }) {

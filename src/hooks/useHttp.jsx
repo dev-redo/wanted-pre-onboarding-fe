@@ -1,6 +1,9 @@
 /**
- * @param {url, method, headers, body} reqConfig
- * @return {object}
+ * useHttp
+ * @typedef { function }
+ * @function fetch 커스텀 훅
+ * @param { object } reqConfig
+ * @return { any } response 객체
  */
 export default async function useHttp(reqConfig) {
   const { url, method, headers, body } = reqConfig;
