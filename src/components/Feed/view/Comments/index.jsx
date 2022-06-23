@@ -19,9 +19,8 @@ export default function Comments({ children, ...props }) {
 
 const S = {};
 S.Comments = styled.section`
-  padding: 0rem 1rem;
-  a > span {
-    color: #a1a1a1;
+  & > a > span {
+    color: #757575;
   }
   & > section {
     padding: 0.5rem 0;

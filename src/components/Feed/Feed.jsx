@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Base } from '../../styles';
-import Header from './view/Header';
-import ContentLayout from './view/Content';
 import LazyImg from '../common/LazyImg';
+import Header from './view/Header';
 import Comments from './view/Comments';
 import Like from './view/IconButton/LikeBtn';
 import Send from './view/IconButton/SendBtn';
@@ -32,6 +32,10 @@ Feed.Img = function FeedImg({ children, ...props }) {
   );
 };
 
+Feed.Content = function FeedContent({ children, ...props }) {
+  return <S.Content {...props}>{children}</S.Content>;
+};
+
 Feed.Icons = function FeedIcons({ children, ...props }) {
   return (
     <S.IconsWrapper>
@@ -45,8 +49,23 @@ Feed.Icons = function FeedIcons({ children, ...props }) {
   );
 };
 
-Feed.Content = function FeedContent({ children, ...props }) {
-  return <ContentLayout {...props} />;
+Feed.HeartNum = function FeedHeartNum({ heartNum }) {
+  return (
+    <S.HeartNum>
+      <span>좋아요 {heartNum}개</span>
+    </S.HeartNum>
+  );
+};
+
+Feed.Info = function FeedInfo({ name, info }) {
+  return (
+    <S.Info>
+      <Link to="#">
+        <span>{name}&nbsp;</span>
+      </Link>
+      <span>{info}</span>
+    </S.Info>
+  );
 };
 
 Feed.Comments = function FeedComments({ children, ...props }) {
@@ -92,14 +111,32 @@ S.ImgWrapper = styled.div`
   border: 1px solid #e4e4e4;
 `;
 
+S.Content = styled.section`
+  display: grid;
+  row-gap: 1rem;
+  padding: 1rem 1rem;
+`;
+
 S.IconsWrapper = styled.section`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem;
   row-gap: 1rem;
   section {
     display: flex;
     gap: 1rem;
+  }
+`;
+
+S.HeartNum = styled.section`
+  span {
+    font-size: 1rem;
+  }
+`;
+
+S.Info = styled.section`
+  font-size: 1rem;
+  a > span {
+    font-weight: bold;
   }
 `;
 
@@ -123,19 +160,5 @@ S.Input = styled.section`
       cursor: default;
       color: #b2dffc;
     }
-  }
-`;
-
-S.Button = styled.button`
-  width: 100%;
-  height: 2.5rem;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-weight: bolder;
-  color: white;
-  background-color: #0195f7;
-  &:disabled {
-    cursor: default;
-    background-color: #b2dffc;
   }
 `;

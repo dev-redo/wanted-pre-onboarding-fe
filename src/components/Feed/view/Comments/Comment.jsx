@@ -27,6 +27,6 @@ S.Comment = styled.div`
 `;
 
 S.Name = styled.span`
-  color: black;
   font-weight: bold;
+  color: black;
 `;
