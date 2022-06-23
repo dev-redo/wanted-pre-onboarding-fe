@@ -1,31 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { isAuthorized } from '../../modules/atoms/auth';
+import { authToken, userInfo } from '../../modules/atoms/auth';
 import useHttp from '../../hooks/useHttp';
 import { findUser } from '../../lib/api/auth/findUser';
-import { REGEX_EMAIL, REGEX_PW } from '../../constants/regex';
 import LoginForm from './LoginForm';
 import Form from '../common/Form';
 
+import { loginField } from '../../constants/fieldData';
+
 export default function LoginFormLayout() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useRecoilState(isAuthorized);
-
-  const fieldData = [
-    {
-      name: 'email',
-      placeholder: '전화번호, 사용자 이름 또는 이메일',
-      type: 'text',
-      regex: REGEX_EMAIL,
-    },
-    {
-      name: 'password',
-      placeholder: '비밀번호',
-      type: 'password',
-      regex: REGEX_PW,
-    },
-  ];
+  const [auth, setAuth] = useRecoilState(authToken);
+  const [user, setUser] = useRecoilState(userInfo);
 
   const loginCallback = async (isValid, inputValues) => {
     if (!isValid) return;
@@ -41,16 +28,17 @@ export default function LoginFormLayout() {
     }
 
     setAuth(!auth);
-    localStorage.setItem('isAuthorized', JSON.stringify(!auth));
+    localStorage.setItem('authToken', JSON.stringify(!auth));
+    setUser(inputValues.email);
+    localStorage.setItem('userInfo', JSON.stringify(inputValues.email));
+
     navigate('/', { replace: true });
   };
 
   return (
-    <>
-      <LoginForm>
-        <LoginForm.Img />
-        <Form fieldData={fieldData} submitCallback={loginCallback} />
-      </LoginForm>
-    </>
+    <LoginForm>
+      <LoginForm.Img />
+      <Form fieldData={loginField} submitCallback={loginCallback} />
+    </LoginForm>
   );
 }
