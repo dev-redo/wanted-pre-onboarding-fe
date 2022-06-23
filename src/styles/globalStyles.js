@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
   button {
     cursor: pointer;
+    padding: 0;
   }
 `;
 
