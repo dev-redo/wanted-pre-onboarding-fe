@@ -1,17 +1,16 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import GlobalNav from './Nav';
 
-export default function Gnb({ children, ...props }) {
-  return <S.Container {...props}>{children}</S.Container>;
+export default function GnbLayout({ childeren, ...props }) {
+  return (
+    <S.Container>
+      <S.Img src={require('../../../assets/image/Instargram-logo.png')} />
+      <S.Input placeholder="검색" {...props} />
+      <GlobalNav />
+    </S.Container>
+  );
 }
-
-Gnb.Img = function GnbImg() {
-  return <S.Img src={require('../../../assets/image/Instargram-logo.png')} />;
-};
-
-Gnb.Input = function GnbInput({ children, ...props }) {
-  return <S.Input placeholder="검색" {...props} />;
-};
 
 const S = {};
 

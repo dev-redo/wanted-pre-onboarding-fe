@@ -1,16 +1,18 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { isAuthorized } from '../../modules/atoms/auth';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useUserDispatch } from '../../../modules/context/auth';
 
 export default function GlobalNav({ childeren, ...props }) {
   const navigate = useNavigate();
-  const [auth, setAuth] = useRecoilState(isAuthorized);
+  const dispatch = useUserDispatch();
 
-  const logoutHandler = e => {
-    setAuth(!auth);
-    localStorage.setItem('isAuthorized', JSON.stringify(!auth));
+  const logoutCallback = async () => {
+    alert('로그아웃 되었습니다.');
+    dispatch({
+      type: 'LOGOUT',
+    });
+
     navigate('/login', { replace: true });
   };
 
@@ -18,7 +20,7 @@ export default function GlobalNav({ childeren, ...props }) {
     <S.Nav {...props}>
       <S.Button />
       <S.Button />
-      <S.Button onClick={logoutHandler}>Logout</S.Button>
+      <S.Button onClick={logoutCallback}>Logout</S.Button>
     </S.Nav>
   );
 }

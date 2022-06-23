@@ -1,15 +1,13 @@
 import React from 'react';
-import Gnb from './Gnb';
+import Gnb from './view/Gnb';
 import { BackGround } from '../../styles';
 
 function GlobalLayout({ children, ...props }) {
   return (
-    <>
-      <BackGround>
-        <Gnb />
-        {children}
-      </BackGround>
-    </>
+    <BackGround>
+      <Gnb />
+      {children}
+    </BackGround>
   );
 }
 
