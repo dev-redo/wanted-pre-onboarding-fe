@@ -1,16 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import useHttp from '../hooks/useHttp';
+import { getFeedData } from '../api/feed';
 import { getAsyncValue } from '../util/getAsyncValue';
 import { useUserState } from '../modules/context/auth';
 import GlobalLayout from '../layout/global';
 import FeedLayout from '../components/Feed';
 
-const suspendedFeedData = getAsyncValue(
-  useHttp({
-    url: './data/instargramFeedData.json',
-  }),
-);
+const suspendedFeedData = getAsyncValue(getFeedData());
 
 export default function Home({ children, ...props }) {
   const { token } = useUserState();

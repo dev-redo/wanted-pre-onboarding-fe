@@ -4,7 +4,7 @@ import { loginField } from '../../constants/fieldData';
 import { useUserDispatch } from '../../modules/context/auth';
 
 import { useNavigate } from 'react-router-dom';
-import useHttp from '../../hooks/useHttp';
+import { getRegisterUserList } from '../../api/auth';
 import { findUser } from './domain/findUser';
 import { extractIdFromEmail } from './domain/extractIdFromEmail';
 
@@ -15,9 +15,7 @@ export default function LoginFormLayout() {
   const loginCallback = async (isValid, inputValues) => {
     if (!isValid) return;
 
-    const registerUserList = await useHttp({
-      url: './data/registerUserList.json',
-    });
+    const registerUserList = await getRegisterUserList();
     const isUserExist = await findUser(inputValues, registerUserList);
 
     if (!isUserExist) {
@@ -37,7 +35,10 @@ export default function LoginFormLayout() {
   return (
     <LoginForm>
       <LoginForm.Img />
-      <LoginForm.Form fieldData={loginField} submitCallback={loginCallback} />
+      <LoginForm.Form
+        fieldData={loginField}
+        submitCallback={loginCallback}
+      />
     </LoginForm>
   );
 }

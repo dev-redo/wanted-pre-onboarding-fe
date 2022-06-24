@@ -5,7 +5,7 @@
  * @param { object } reqConfig
  * @return { any } response 객체
  */
-export default async function useHttp(reqConfig) {
+export async function useHttp(reqConfig) {
   const { url, method, headers, body } = reqConfig;
 
   const res = await fetch(url, {
