@@ -80,13 +80,14 @@ Feed.Input = function FeedInput({
   const [userComment, setUserComment] = useState('');
   let isSubmit = userComment !== '';
 
-  const submitHandler = () => {
+  const submitHandler = e => {
+    e.preventDefault();
     submitCallback({ user, userComment });
     setUserComment('');
   };
 
   return (
-    <S.Input {...props}>
+    <S.Input {...props} onSubmit={submitHandler}>
       <EmoteBtn />
       <input
         name="comment"
@@ -95,9 +96,7 @@ Feed.Input = function FeedInput({
         value={userComment}
         onChange={({ target: { value } }) => setUserComment(value)}
       />
-      <button disabled={!isSubmit} onClick={submitHandler}>
-        게시
-      </button>
+      <button disabled={!isSubmit}>게시</button>
     </S.Input>
   );
 };
@@ -146,7 +145,7 @@ S.Info = styled.section`
   }
 `;
 
-S.Input = styled.section`
+S.Input = styled.form`
   display: flex;
   width: 100%;
   height: 4rem;
