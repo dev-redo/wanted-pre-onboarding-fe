@@ -15,19 +15,18 @@ export default function Feed({ children, ...props }) {
   return <S.Container {...props}>{children}</S.Container>;
 }
 
-Feed.Header = function FeedHeader({ children, ...props }) {
+Feed.Header = function FeedHeader({ name, avatar, ...props }) {
   const userInfo = {
-    name: '홍길동',
-    avatarUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLTk3oOlcaYmGbmB0WrrSJzI_hX4RxCr8x5mpKHuXQ=s88-c-k-c0x00ffffff-no-rj-mo',
+    name,
+    avatar,
   };
   return <Header user={userInfo} />;
 };
 
-Feed.Img = function FeedImg({ children, ...props }) {
+Feed.Img = function FeedImg({ src, ...props }) {
   return (
-    <S.ImgWrapper>
-      <LazyImg src={require('../../assets/image/Instargram-logo.png')} />
+    <S.ImgWrapper {...props}>
+      <LazyImg src={src} alt="피드 이미지" />
     </S.ImgWrapper>
   );
 };
@@ -38,7 +37,7 @@ Feed.Content = function FeedContent({ children, ...props }) {
 
 Feed.Icons = function FeedIcons({ children, ...props }) {
   return (
-    <S.IconsWrapper>
+    <S.IconsWrapper {...props}>
       <section>
         <Like />
         <CommentBtn />
@@ -49,49 +48,56 @@ Feed.Icons = function FeedIcons({ children, ...props }) {
   );
 };
 
-Feed.HeartNum = function FeedHeartNum({ heartNum }) {
+Feed.LikeCnt = function FeedHeartNum({ likeCnt, ...props }) {
   return (
-    <S.HeartNum>
-      <span>좋아요 {heartNum}개</span>
-    </S.HeartNum>
+    <S.LikeCnt>
+      <span>좋아요 {likeCnt}개</span>
+    </S.LikeCnt>
   );
 };
 
-Feed.Info = function FeedInfo({ name, info }) {
+Feed.Info = function FeedInfo({ name, description, ...props }) {
   return (
     <S.Info>
       <Link to="#">
         <span>{name}&nbsp;</span>
       </Link>
-      <span>{info}</span>
+      <span>{description}</span>
     </S.Info>
   );
 };
 
-Feed.Comments = function FeedComments({ children, ...props }) {
-  const comment = {
-    user: '홍길동',
-    userComment: '으아아아',
-  };
-
-  return <Comments comment={comment} commentsCnt="5" />;
+Feed.Comments = function FeedComments({ comments, ...props }) {
+  return <Comments comments={comments} />;
 };
 
-Feed.Input = function FeedInput({ children, ...props }) {
-  const [value, setValue] = useState('');
-  let isSubmit = value !== '';
+Feed.Input = function FeedInput({
+  user,
+  comments,
+  submitCallback,
+  ...props
+}) {
+  const [userComment, setUserComment] = useState('');
+  let isSubmit = userComment !== '';
+
+  const submitHandler = () => {
+    submitCallback({ user, userComment });
+    setUserComment('');
+  };
 
   return (
-    <S.Input>
+    <S.Input {...props}>
       <EmoteBtn />
       <input
         name="comment"
         placeholder="댓글 달기"
         type="text"
-        value={value}
-        onChange={({ target: { value } }) => setValue(value)}
+        value={userComment}
+        onChange={({ target: { value } }) => setUserComment(value)}
       />
-      <button disabled={!isSubmit}>게시</button>
+      <button disabled={!isSubmit} onClick={submitHandler}>
+        게시
+      </button>
     </S.Input>
   );
 };
@@ -127,7 +133,7 @@ S.IconsWrapper = styled.section`
   }
 `;
 
-S.HeartNum = styled.section`
+S.LikeCnt = styled.section`
   span {
     font-size: 1rem;
   }

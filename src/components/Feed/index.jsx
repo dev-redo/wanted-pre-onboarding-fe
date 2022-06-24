@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useUserState } from '../../modules/context/auth';
 import Feed from './Feed';
+import { convertNationalNumbers } from '../../util/convertNationalNumbers';
 
 export default function FeedLayout({ feed }) {
   const { userId } = useUserState();
+  const {
+    writerName,
+    writerPhoto,
+    feedImg,
+    likeCount,
+    description,
+    comments,
+  } = feed;
+
+  const [updatedComments, setUpdatedComments] = useState(comments);
+  const commentSubmitCallback = value => {
+    setUpdatedComments([...updatedComments, value]);
+  };
 
   return (
     <Feed>
-      <Feed.Header />
-      <Feed.Img />
+      <Feed.Header name={writerName} avatar={writerPhoto} />
+      <Feed.Img src={feedImg} />
       <Feed.Content>
         <Feed.Icons />
-        <Feed.HeartNum heartNum="1" />
-        <Feed.Info
-          name="홍길동"
-          info="너 밖에 없어서 널 사랑한게 아니라 널 사랑하다보니 너밖에 없더라 귀여니 - 늑대의 유혹"
+        <Feed.LikeCnt
+          likeCnt={convertNationalNumbers({ num: likeCount })}
         />
-        <Feed.Comments />
+        <Feed.Info name={writerName} description={description} />
+        <Feed.Comments comments={updatedComments} />
       </Feed.Content>
-      <Feed.Input />
+      <Feed.Input
+        user={userId}
+        comments={updatedComments}
+        submitCallback={commentSubmitCallback}
+      />
     </Feed>
   );
 }
