@@ -3,148 +3,173 @@
     {
       "id": "f001",
       "date": "2022-03-10T04:00:13",
-      "userName": "BTS",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLTk3oOlcaYmGbmB0WrrSJzI_hX4RxCr8x5mpKHuXQ=s88-c-k-c0x00ffffff-no-rj-mo",
+      "writerName": "BTS",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLTk3oOlcaYmGbmB0WrrSJzI_hX4RxCr8x5mpKHuXQ=s88-c-k-c0x00ffffff-no-rj-mo",
       "likeCount": "1148628",
       "feedImg": "https://source.unsplash.com/random/600x500",
       "description": "인스타그램 처음이에요^^ 같이 맞팔해요!",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "abc123": "What are you doing?" },
-        { "abc123": "I'm fine Thank you" },
-        { "jkl123": "맞팔했어요 ^^ 자주 소통해요 ^^" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f002",
       "date": "2022-03-11T04:00:13",
-      "userName": "뷔",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLRunRatyhbyxX8DAg1x_Bvo19H324LyGFwMWw=s88-c-k-c0x00ffffff-no-rj",
+      "writerName": "뷔",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLRunRatyhbyxX8DAg1x_Bvo19H324LyGFwMWw=s88-c-k-c0x00ffffff-no-rj",
       "description": "만나서 반가워요! 제 이름은 뷔입니다!",
       "likeCount": "524765",
       "feedImg": "https://source.unsplash.com/random/900x500",
       "comments": [
-        { "jkl123": "Hey whats up" },
-        { "qwe123": "Oh my god! I like it!" },
-        { "qwe123": "반가워요 ^^" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" }
       ]
     },
     {
       "id": "f003",
       "date": "2022-04-15T04:00:13",
-      "userName": "BLACKPINK",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
+      "writerName": "BLACKPINK",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
       "description": "오늘 하루도 행복하게 보내세요 ^^!",
       "likeCount": "202495",
       "feedImg": "https://source.unsplash.com/random/700x1080",
       "comments": [
-        { "jkl123": "Hey whats up" },
-        { "qwe123": "I love you BLACKPINK!" },
-        { "qwe123": "반가워요 ^^" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" }
       ]
     },
     {
       "id": "f004",
       "date": "2021-08-10T04:00:13",
-      "userName": "HyunA&DAWN",
-      "userPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
+      "writerName": "HyunA&DAWN",
+      "writerPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
       "description": "오늘 날씨 진짜 덥다!",
       "likeCount": "256",
       "feedImg": "https://source.unsplash.com/random/600x500",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "abc123": "What are you doing?" },
-        { "abc123": "I'm fine Thank you" },
-        { "jkl123": "맞팔했어요 ^^ 자주 소통해요 ^^" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" }
       ]
     },
     {
       "id": "f005",
       "date": "2021-05-10T04:00:13",
-      "userName": "HyunA&DAWN",
-      "userPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
+      "writerName": "HyunA&DAWN",
+      "writerPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
       "description": "안녕 다들 오랜만이야!",
       "likeCount": "256",
       "feedImg": "https://source.unsplash.com/random/900x500",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "abc123": "What are you doing?" },
-        { "abc123": "I'm fine Thank you" },
-        { "jkl123": "맞팔했어요 ^^ 자주 소통해요 ^^" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f006",
       "date": "2021-03-11T04:00:13",
-      "userName": "뷔",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLRunRatyhbyxX8DAg1x_Bvo19H324LyGFwMWw=s88-c-k-c0x00ffffff-no-rj",
+      "writerName": "뷔",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLRunRatyhbyxX8DAg1x_Bvo19H324LyGFwMWw=s88-c-k-c0x00ffffff-no-rj",
       "description": "만나서 반가워요! 제 이름은 뷔입니다!",
       "likeCount": "8425",
       "feedImg": "https://source.unsplash.com/random/900x500",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "jkl123": "맞팔했어요 ^^ 자주 소통해요 ^^" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f007",
       "date": "2021-05-10T04:00:13",
-      "userName": "HyunA&DAWN",
-      "userPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
+      "writerName": "HyunA&DAWN",
+      "writerPhoto": "https://yt3.ggpht.com/mPNkSw_8GGeONuhY927-WdaSOECE85OGOy2Rzu1fUxT-FGAmlbcukr9YMwVKMUlIzUqxZ2An8Q=s88-c-k-c0x00ffffff-no-nd-rj",
       "description": "안녕 다들 오랜만이야!",
       "likeCount": "256",
       "feedImg": "https://source.unsplash.com/random/900x500",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "abc123": "What are you doing?" },
-        { "abc123": "I'm fine Thank you" },
-        { "jkl123": "맞팔했어요 ^^ 자주 소통해요 ^^" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f008",
       "date": "2022-06-10T04:00:13",
-      "userName": "BTS",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLTk3oOlcaYmGbmB0WrrSJzI_hX4RxCr8x5mpKHuXQ=s88-c-k-c0x00ffffff-no-rj-mo",
+      "writerName": "BTS",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLTk3oOlcaYmGbmB0WrrSJzI_hX4RxCr8x5mpKHuXQ=s88-c-k-c0x00ffffff-no-rj-mo",
       "likeCount": "1148628",
       "feedImg": "https://source.unsplash.com/random/600x500",
       "description": "오늘 하루도 화이팅!",
       "comments": [
-        { "abc123": "Hi Nice to meet you!" },
-        { "qwe123": "Oh my god! I like it" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f009",
       "date": "2022-04-15T04:00:13",
-      "userName": "BLACKPINK",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
+      "writerName": "BLACKPINK",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
       "description": "오늘 점심은 햄버거!",
       "likeCount": "202495",
       "feedImg": "https://source.unsplash.com/random/700x1080",
       "comments": [
-        { "jkl123": "Hey whats up" },
-        { "qwe123": "I love you BLACKPINK!" },
-        { "qwe123": "반가워요 ^^" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     },
     {
       "id": "f010",
       "date": "2022-04-15T04:00:13",
-      "userName": "BLACKPINK",
-      "userPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
+      "writerName": "BLACKPINK",
+      "writerPhoto": "https://yt3.ggpht.com/ytc/AKedOLTat8_vr7h2i29n67lvNLMp1F-9Ch2ejFRlRzt0zQ=s88-c-k-c0x00ffffff-no-rj-mo",
       "description": "오늘 하루도 행복하게 보내세요 ^^!",
       "likeCount": "202495",
       "feedImg": "https://source.unsplash.com/random/700x1080",
       "comments": [
-        { "qwe123": "I love you BLACKPINK!" },
-        { "qwe123": "반가워요 ^^" },
-        { "bbnqwr123": "행복한 하루가 되세요^^" }
+        { "user": "abc123", "userComment": "Hi Nice to meet you!" },
+        { "user": "abc123", "userComment": "What are you doing?" },
+        { "user": "abc123", "userComment": "I'm fine Thank you" },
+        {
+          "user": "jkl123",
+          "userComment": "맞팔했어요 ^^ 자주 소통해요 ^^"
+        },
+        { "user": "qwe123", "userComment": "Oh my god! I like it" }
       ]
     }
   ]
