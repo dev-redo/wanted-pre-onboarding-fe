@@ -1,4 +1,9 @@
+
 # :: 원티드 프리온보딩 프론트엔드 코스 사전과제
+
+<details>
+<summary>사전 과제 안내</summary>
+<div markdown="1">
 
 ## Quick Overview
 
@@ -91,3 +96,170 @@ npm start
 ## 참고 이미지
 
 [참고 이미지 링크](https://bclef25.notion.site/1ed6d5b2192b45eeb4104a67f6a77250)
+
+</div>
+</details>
+
+# 요구 사항 분석
+
+## (Assignment 1 & 3) Login 페이지 생성 & Form Validation
+   - Email, Password Input과 Submit 버튼
+   - useRef hook을 이용한 렌더링 최적화
+   - Email, Password 유효성 검사
+      - 각 입력창이 유효성을 통과하는지 여부를 CSS로 표현
+      - Email, Password 모두 유효성을 통과할 시 Button 색상 진하게 변경 & Submit 활성화
+      - 유효성 검사 시 정규표현식 사용 및 Validation 함수 분리
+   - Submit시 존재하는 유저인지 확인
+      - public/data 디렉토리에 가입된 유저 정보(email, password) 저장
+      - 입력된 Email과 Password와 일치하는 유저가 존재하는지 확인
+        - 존재하면 로그인 성공
+        - 존재하지 않으면 로그인 실패
+
+## (Assignment 2) GNB(Global Nabigation Bar)
+   - 로그인 후 이동하는 메인페이지의 GNB 구현(sticky)
+   - 모바일을 고려한 반응형 웹 구현
+
+## (Assignment 4) Routing
+   - 로그인, 로그아웃 시 라우팅을 통해 각각 메인 페이지, 로그인 페이지로 이동
+   - 로그인 시 로컬 스토리지에 유저 Id와 토큰을 저장
+   - 로그아웃 시 로컬 스토리지에 저장된 유저 Id와 토큰 삭제
+
+## (Assignment 5) 인스타그램 Feed 구현
+   - Feed 컴포넌트 구현
+   - public/data 디렉토리에 인스타그램 피드 정보를 저장 후 fetch로 request
+   - 댓글 추가 기능 구현
+     - Enter key & 마우스 클릭으로 댓글 게시
+   - Feed 레이아웃 모바일을 고려
+   - 이미지 크기 사이즈 다르게 구현
+   - [intersection observer등을 사용하여 lazy loading을 구현시 가산점](https://github.com/wanted-pre-onboarding-fe/pre-assignment/issues/4)
+   - 메인 페이지 레이아웃 반응형 웹 구현 ( = global 레이아웃 만들기 )
+
+<br>
+
+
+# 파일 구조
+
+```
+// 어플리케이션에 사용되는 json 파일들
+public
+└── data
+    ├── instargramFeedData.json
+    └── registerUserList.json
+
+
+// 어플리케이션의 기능에 사용되는 소스들
+src
+├── pages                            // 페이지를 담당하는 컴포넌트
+│   ├── Home.jsx                     // 인스타그램 메인 페이지
+│   └── Login.jsx                    // 인스타그램 Login 페이지
+│
+├── component                        // 컴포넌트와 컨테이너 파일들
+│    ├── common                      // 공통적으로 사용되는 컴포넌트들(ex Avatar, LazyImg)
+│    ├── Feed                        // 인스타그램 Feed 컴포넌트
+│    └── LoginForm                   // 인스타그램 Login Form 컴포넌트
+│
+├── layout                           // 어플리케이션 레이아웃
+│    └── global                      // 전역 레이아웃
+│
+├── hooks                            // 커스텀 훅
+│    ├── useHttp.jsx                 // httpRequset 커스텀 훅
+│    └── useLazyImageObserver.jsx    // Intersection Observer API를 이용한 Lazy Loading 훅
+│
+├── module                           // 전역 상태 관리 atom, selector, context 모임
+│    └── context
+│        └── auth.jsx                // 로그인 인증 관리 컨텍스트
+│
+├── api                              // fetch를 이용하여 통신 로직을 담당
+│    └── auth.js                     // 가입된 유저 정보 Request
+│    └── feed.js                     // 인스타그램 Feed 정보 Request
+│
+├── util                             // 각 컴포넌트에서 사용되는 공통 로직들을 util로 분리
+│
+├── styles                           // 공통되는 style 모임
+│
+├── assets                           // 어플리케이션에서 사용하는 icon, image 파일들
+│    └── icon
+│    └── image
+│
+└── constants                        // 각 컴포넌트에서 사용되는 변수 모임
+     └── regex.js                    // 정규표현식 모임
+     └── fieldData.js                // Form 컴포넌트에서 표현될 Field Data
+
+```
+
+
+# 기능
+
+## 1. Login 페이지 생성 & Form Validation
+
+<details>
+<summary>데모 영상</summary>
+<div markdown="1">
+
+## 등록되지 않은 유저일 시
+
+![instagram - Chrome 2022-06-25 00-06-56](https://user-images.githubusercontent.com/69149030/175565266-b51ec78c-0252-4535-be47-3f31e671000a.gif)
+
+## 등록된 유저일 시
+
+![instagram - Chrome 2022-06-25 00-09-43](https://user-images.githubusercontent.com/69149030/175566414-c942c015-1fbe-4b42-83ee-c97e20618180.gif)
+
+</div>
+</details>
+
+## 2. GNB(Global Nabigation Bar)
+
+<details>
+<summary>데모 영상</summary>
+<div markdown="1">
+
+## stick GNB
+![instagram - Chrome 2022-06-25 00-26-35 (1)](https://user-images.githubusercontent.com/69149030/175568563-e9474d2c-a832-4a5c-bb21-7ff0354d263f.gif)
+
+</div>
+</details>
+
+
+## 3. Routing
+
+<details>
+<summary>데모 영상</summary>
+<div markdown="1">
+
+## 로그인 시 메인 페이지 이동, 로그아웃 시 로그인 페이지 이동
+![instagram - Chrome 2022-06-25 00-38-57](https://user-images.githubusercontent.com/69149030/175604705-b3e60e13-3de5-427a-90ce-096cf3734bea.gif)
+
+</div>
+</details>
+
+
+## 4. 인스타그램 Feed 구현
+
+<details>
+<summary>데모 영상</summary>
+<div markdown="1">
+
+## 댓글 게시
+https://user-images.githubusercontent.com/69149030/175607221-712be649-3a07-4bce-9752-afbc1c846faf.mp4
+
+
+## Lazy Loading
+https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-83d6-0cddfd60c762.mp4
+
+</div>
+</details>
+
+
+# 트러블슈팅
+
+
+
+# 해결 못한 과제
+
+
+# 과제 하면서 배운 점/느낀 점
+
+
+
+# 과제 하면서 공부한 내용 (optional)
+
