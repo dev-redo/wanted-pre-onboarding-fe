@@ -7,7 +7,6 @@ import { useState, useRef, useEffect } from 'react';
  * @return {boolean, src, ref}
  */
 export function useLazyImageObserver({ src }) {
-  const [isLoad, setIsLoad] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const imageRef = useRef(null);
 
@@ -18,7 +17,6 @@ export function useLazyImageObserver({ src }) {
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setIsLoad(true);
             setImageSrc(src);
             observer.unobserve(imageRef.current);
           }
@@ -37,5 +35,5 @@ export function useLazyImageObserver({ src }) {
     };
   }, [imageRef, imageSrc, src]);
 
-  return { isLoad, imageSrc, imageRef };
+  return { imageSrc, imageRef };
 }

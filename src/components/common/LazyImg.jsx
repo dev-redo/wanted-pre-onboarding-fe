@@ -3,9 +3,19 @@ import styled from 'styled-components';
 import { useLazyImageObserver } from '../../hooks/useLazyImageObserver';
 
 function LazyImg({ src, alt }) {
-  const { isLoad, imageSrc, imageRef } = useLazyImageObserver({ src });
+  let isLoad = false;
+  const { imageSrc, imageRef } = useLazyImageObserver({
+    src,
+  });
 
-  return <S.Lazy isLoad={isLoad} ref={imageRef} src={imageSrc} alt={alt} />;
+  return (
+    <S.Lazy
+      ref={imageRef}
+      src={imageSrc}
+      alt={alt}
+      onload={() => (isLoad = true)}
+    />
+  );
 }
 
 export default React.memo(LazyImg);
