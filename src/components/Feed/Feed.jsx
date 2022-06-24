@@ -104,13 +104,14 @@ Feed.Input = function FeedInput({
 const S = {};
 
 S.Container = styled(Base)`
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
 `;
 
 S.ImgWrapper = styled.div`
-  display: block;
+  display: grid;
   width: 100%;
   height: 100%;
   border: 1px solid #e4e4e4;
