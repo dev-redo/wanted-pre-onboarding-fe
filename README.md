@@ -106,7 +106,7 @@ npm start
 # 요구 사항 분석
 
 <details>
-<summary>사전 과제 안내</summary>
+<summary>요구 사항 분석</summary>
 <div markdown="1">
   
 ## (Assignment 1 & 3) Login 페이지 생성 & Form Validation
@@ -425,7 +425,6 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 - [getAsyncValue 함수에 Request 결과를 인수로 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L9)
 - getAsyncValue 함수는 [status에 따라 다른 결과값을 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L22)
-	
 - 함수가 실행될 당시 status는 pending
     - [프로미스 후속 작업 함수 throw](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L24)
     - throw를 하게되면 React는 해당 컴포넌트에서 발생한 중단을 감지하고 렌더링 중지
