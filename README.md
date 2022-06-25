@@ -330,6 +330,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 </details>
 
 - [Main 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx)
+  - [GNB 모바일 대응](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Gnb.jsx)
   - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 인스타그램 Feed 데이터를 request
   - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)를 이용해 동기적으로 Request 구현
     - 인자로 [feed 데이터 요청 api](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/api/auth.js#L3) 결과값(promise) 전달
