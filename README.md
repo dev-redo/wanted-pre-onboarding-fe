@@ -332,7 +332,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 - [Main 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx)
   - [GNB 모바일 대응](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Gnb.jsx)
   - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 인스타그램 Feed 데이터를 request
-  - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)를 이용해 동기적으로 Request 구현
+  - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)를 이용해 비동기 처리
     - 인자로 [feed 데이터 요청 api](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/api/auth.js#L3) 결과값(promise) 전달
     - request 처리가 성공할 시 request 처리 결과값 리턴
     - 실패 시 error 리턴
@@ -428,7 +428,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 ### 해결 - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)
 
-- [getAsyncValue 함수에 Request 결과를 인수로 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L9)
+- [getAsyncValue 함수에 api를 인수로 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L9)
 - getAsyncValue 함수는 [status에 따라 다른 결과값을 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L22)
 - 함수가 실행될 당시 status는 pending
     - [프로미스 후속 작업 함수 throw](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L24)
