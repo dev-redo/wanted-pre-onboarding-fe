@@ -418,7 +418,11 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 나는 리액트 Suspense가 비동기 코드를 동기적으로 동작하게끔 만들어줄 것이라 생각했으나, 비동기적인 데이터가 불러와지기 전까지 fallback을 보여주는 역할만을 수행하였다.
 
-이에 대한 해결 방법을 [해당 포스팅](https://sangmin802.github.io/Study/Think/suspense/)에서 찾았고, request시 반환되는 Promise의 결과값을 반환하는 함수를 따로 정의해 선언적으로 비동기를 처리하고자 하였다.
+찾아보니 비동기 처리는 SWR, React Query를 이용하였다. 하지만 나는 두 라이브러리를 써본 적이 없어서 리액트(또는 자바스크립트) 기능으로 해결할 수 있는지 찾아보았다.
+
+그러던 중 [해당 포스팅](https://sangmin802.github.io/Study/Think/suspense/)에서 Suspense의 생명주기를 이용해 비동기 처리 하는 것을 보았다.
+
+이를 참고해 api를 인자로 받아 해당 api의 비동기 처리 결과값을 반환하는 함수를 따로 정의해 선언적으로 비동기를 처리하고자 하였다.
 
 <br>
 
@@ -441,9 +445,9 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 ![](https://velog.velcdn.com/images/dev-redo/post/75bd03bb-0944-429d-b731-f6b7e72cfff4/image.png)
 
-[초창기 구현](https://github.com/dev-redo/wanted-pre-onboarding-fe/commit/b966578b20864f7f2ef4b3334353035cc931bd51) 당시 초기 로딩 상태를 false로 이미지 src 상태가 업데이트되면 true로 변경해주는 식으로 구현했다. 
+[초창기 구현](https://github.com/dev-redo/wanted-pre-onboarding-fe/commit/b966578b20864f7f2ef4b3334353035cc931bd51) 당시 useLazyImageObserver 훅에서 src 상태가 업데이트되면 로딩 상태를 변경해주는 식으로 구현했다.
 
-로딩 전일 시에는 이미지 대신 회색 박스를 보여주었고, 로딩 이후에는 이미지 src를 보여주었다.
+그리고 LazyImg에서는 로딩 전일 시 이미지 대신 회색 박스를 보여주었고, 로딩 이후에는 이미지 src를 보여주었다.
 
 처음에는 Feed Image에 assets 폴더에 있는 이미지를 넣어뒀는데, 그 당시 로딩되기 전 회색박스가 잘 보였다. 하지만 request한 이미지를 넣어줄 때는 img에 적용된 style이 지워졌다.
 
