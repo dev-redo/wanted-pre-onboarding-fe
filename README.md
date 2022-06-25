@@ -473,8 +473,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 # 과제 보완점
 
-![image](https://user-images.githubusercontent.com/69149030/175765545-db983409-6817-4709-8674-843398797118.png)
-
+![image](https://user-images.githubusercontent.com/69149030/175775163-1f002c72-ac3c-4d8f-b041-2098fef45d25.png)
 
 인스타그램 Feed와 Reels의 경우 스타일링만 다를 뿐 인터페이스가 동일하다.
 따라서 게시물 인터페이스를 만든 후 Feed 컴포넌트에 스타일링과 도메인을 주입하는 방식으로 구현하려고 했으나, 시간이 부족해 하지 못했다.
