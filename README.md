@@ -100,8 +100,15 @@ npm start
 </div>
 </details>
 
+<br>
+
+
 # 요구 사항 분석
 
+<details>
+<summary>사전 과제 안내</summary>
+<div markdown="1">
+  
 ## (Assignment 1 & 3) Login 페이지 생성 & Form Validation
    - Email, Password Input과 Submit 버튼
    - useRef hook을 이용한 렌더링 최적화
@@ -131,8 +138,12 @@ npm start
      - Enter key & 마우스 클릭으로 댓글 게시
    - Feed 레이아웃 모바일을 고려
    - 이미지 크기 사이즈 다르게 구현
+      - 이미지 반응형 구현
    - [intersection observer등을 사용하여 lazy loading을 구현시 가산점](https://github.com/wanted-pre-onboarding-fe/pre-assignment/issues/4)
    - 메인 페이지 레이아웃 반응형 웹 구현 ( = global 레이아웃 만들기 )
+
+</div>
+</details>
 
 <br>
 
@@ -187,6 +198,8 @@ src
 
 ```
 
+<br>
+
 
 # 기능
 
@@ -200,12 +213,49 @@ src
 
 ![instagram - Chrome 2022-06-25 00-06-56](https://user-images.githubusercontent.com/69149030/175565266-b51ec78c-0252-4535-be47-3f31e671000a.gif)
 
+-등록되지 않은 유저일 시 alert로 표시
+
 ## 등록된 유저일 시
 
 ![instagram - Chrome 2022-06-25 00-09-43](https://user-images.githubusercontent.com/69149030/175566414-c942c015-1fbe-4b42-83ee-c97e20618180.gif)
 
+- 등록된 유저일 시 alert로 표시
+- 메인 페이지로 Redirect
+
+## 로그인 성공 시 Local Storage 에 Id, 토큰 저장
+
+https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-841c-fa40ebb034e8.mp4
+
+- 로그인 성공 시 Local Storage에 유저 Id, 토큰 저장
+
 </div>
 </details>
+
+
+- [로그인 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Login.jsx)
+  - 로그인 Form 컴포넌트 렌더링
+  - [토큰이 있는 경우 Main 페이지로 이동](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Login.jsx#L13)
+  - [전역 style](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/styles/index.js#L14)을 이용해 반응형 웹 구현
+    - 컨테이너 크기는 기본 max-width 45rem
+    - 모바일(320px)일 시 max-width 100%로 변경
+
+<br>
+
+
+- [로그인 Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/tree/main/src/components/LoginForm)
+  - common 컴포넌트인 [Form](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx)을 
+    - Form 컴포넌트에 email과 pw Input에 필요한 [Field Data 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/LoginForm/index.jsx#L38)
+    - 로그인 처리를 담당하는 [Submit Callback 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/LoginForm/index.jsx#L15)
+  - Form 컴포넌트에서 전달받은 [Field Data를 통해 email, password Input 구성](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L18)
+  - Form 컴포넌트는 Submit Button이 존재하며 email, password Input이 [모두 유효성을 통과할 시 활성화](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L41)
+  - Submit button을 클릭 시, 전달받은 SubmitCallback을 통해 로그인 처리
+    - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 등록된 유저 list json 파일 request
+    - 존재하지 않는 유저일 시 로그인 실패 처리
+    - 존재하는 유저일 시, 유저 Id와 토큰을 Local storage에 저장한 후 메인 페이지로 Redirect
+  <br>
+  (Form 컴포넌트는 트러블 슈팅 파트에서 더 자세히 다루고자 한다.)
+
+<br>
 
 ## 2. GNB(Global Nabigation Bar)
 
@@ -218,6 +268,20 @@ src
 
 </div>
 </details>
+
+
+- [전역 레이아웃](https://github.com/dev-redo/wanted-pre-onboarding-fe/tree/main/src/layout/global)
+  - 전역 레이아웃은 [Main 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L18)에서 사용
+  - 자식 컴포넌트로 인스타그램 피드들 렌더링
+
+<br>
+
+- [GNB](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Gnb.jsx)
+  - sticky & space-betwwen
+  - 모바일(320px)일 시 Search 창 사라짐
+  - 마지막 아이콘 Logout 버튼
+
+<br>
 
 
 ## 3. Routing
@@ -233,33 +297,182 @@ src
 </details>
 
 
+- [로그인 시 Local Storage에 유저 Id와 토큰 저장 -> 메인 페이지로 Redirect](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Nav.jsx#L12)
+- [로그아웃 시 Local Storage에 유저 Id와 토큰 삭제 -> 로그인 페이지로 Redirect](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Nav.jsx#L11)
+
+* react-router-dom의 useNavigate을 이용해 Redirect 구현
+
+<br>
+
+
 ## 4. 인스타그램 Feed 구현
 
 <details>
 <summary>데모 영상</summary>
 <div markdown="1">
 
+## Feed Image 반응형 구현
+https://user-images.githubusercontent.com/69149030/175647921-16cd3de3-50c6-492b-a1e0-dd4f2f57833e.mp4
+
 ## 댓글 게시
 https://user-images.githubusercontent.com/69149030/175607221-712be649-3a07-4bce-9752-afbc1c846faf.mp4
 
+- fetch한 Feed의 Comments에 댓글 추가
+- Enter 키와 마우스 클릭으로 댓글 게시
 
 ## Lazy Loading
 https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-83d6-0cddfd60c762.mp4
 
+- Feed 이미지가 뷰포트(rootMargin 10% 포함)에 들어올 때 이미지 로딩
+- Feed 이미지가 로드되기 전 회색 박스로 대체
+
 </div>
 </details>
 
+- [Main 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx)
+  - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 인스타그램 Feed 데이터를 request
+  - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)를 이용해 동기적으로 Request 구현
+    - 인자로 [feed 데이터 요청 api](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/api/auth.js#L3) 결과값(promise) 전달
+    - request 처리가 성공할 시 request 처리 결과값 리턴
+    - 실패 시 error 리턴
+  - Request 동안 대기 & 에러 처리는 React의 [Suspense와 ErrorBoundary](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/App.js#L12) 이용
+  - 메인 페이지에서 Feed 컴포넌트에 [feed 데이터 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L19)
+  
+  (getAsyncValue 함수는 트러블슈팅 파트에서 더 자세히 다루고자 한다)
+
+<br>
+
+- [Feed 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/tree/main/src/components/Feed)
+  - 메인 페이지에서 전달받은 Feed 정보를 이용해 렌더링
+  - Feed 크기는 [전역 style](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/styles/index.js#L14)을 이용해 모바일 대응
+    - 컨테이너 크기는 기본 max-width 45rem
+    - 모바일(320px)일 시 max-width 100%로 변경
+  - Enter키 & 마우스 클릭으로 [댓글 게시](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/Feed/Feed.jsx#L83)
+    - Feed의 Comments에 작성한 댓글 추가
+    - 댓글 게시 후 Input 초기화
+  - Feed Image 반응형 구현(이미지 비율 유지)
+  - intersection observer api를 이용해 Lazy Loading 구현
+    - 타겟이 뷰포트에 들어올 시 구독 & 이미지를 로드하는 [useLazyImageObserver 커스텀 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useLazyImageObserver.jsx)
+    - useLazyImageObserver 커스텀 훅을 이용한 [LazyImg 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/LazyImg.jsx)
+    
+  (lazy loading 관련은 트러블슈팅 파트에서 더 자세히 다루고자 한다)
+
+
+<br>
+
+# 추가. Route 기반 코드 스플리팅
+
+- [Main 페이지와 Login 페이지 라우트를 코드 스플리팅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/App.js#L7)
+- 사용자가 다른 페이지로 이동할 때 비동기적으로 해당 페이지 로딩 -> 번들 최적화
+
+<br>
 
 # 트러블슈팅
 
+## 1. 유효성 검사로 인해 복잡해지는 Form 컴포넌트
 
+### 초창기 구현 - [useForm 커스텀 훅](https://github.com/wanted-pre-onboarding-fe/pre-assignment/commit/b03f6c6c0d5f73a9c52bd4fc0713c197ea5b1fa9)
+
+- useForm 커스텀 훅을 사용 시 email과 pw 입력창의 value 전달
+  - { email, password } InputValues
+- useEffect를 통해 입력창의 value가 변경될 때마다 유효성 검사
+  - validator 함수에 InputValues를 전달
+  - InputValues를 loop돌리면서 각 입력창이 정규표현식을 만족하는지 여부 체크
+- 모든 입력창이 유효할 시 error가 false가 되어 Submit Button 활성화
+
+<br>
+
+위의 로직의 경우 각 입력창의 value가 변경될 때마다 validator 함수에 values를 전달하고, 각 values가 유효성을 통과하는지 체크해주어야 했다.
+
+동작은 잘 작동했으나 입력창들이 전부 유효성을 통과했는지 판별하는 validator 함수가 useForm과 과하게 결합되어 있다고 판단했다. 즉 validator 함수는 useForm에 대해 알아야만 이해할 수 있다는 문제가 있었다.
+
+<br>
+
+### 리펙토링 - [유효성과 Submit을 담당하는 Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx)
+
+![image](https://user-images.githubusercontent.com/69149030/175752710-6614ed5d-3151-43fe-943f-a73cdf40c9a5.png)
+
+- Form 컴포넌트는 Input과 Submit Button이 존재한다.
+- Form 컴포넌트를 사용 시 Form 컴포넌트에서 표현될 입력창들에 대한 데이터 전달
+  - { name, placeholder, type, regex } 배열 (Field Data)
+  - Submit Callback
+- Form 컴포넌트에서는 전달받은 [Field Data 배열을 이용해 Input Field 구성](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L18)
+  - 전달받은 regex를 이용해 [각 입력창의 유효성 통과 여부](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L14) 체크
+- Form 컴포넌트의 Submit Button은 모든 입력창들이 유효성을 통과할 시 활성화
+  - 입력창의 value가 변경될 때마다 각 입력창의 유효성 검사
+- Submit Button을 클릭 시, 전달 받은 [Submit Callback 호출](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L30)
+
+<br>
+
+위의 로직의 경우 Form 컴포넌트를 사용하는 곳에서 Field Data와 Submit Callback을 전달하기만 하면 되므로 선언적이다는 장점이 있다.
+
+<br>
+
+## 2. 비동기를 처리해주지 못하는 리액트 Suspense
+
+
+### 문제 - 동기적으로 처리되지 않는 데이터 불러오기
+
+최근 [토스 컨퍼런스](https://www.youtube.com/watch?v=FvRtoViujGg&t=788s)를 통해 알게된 Suspense와 ErrorBoundary를 이용해 비동기 및 에러 처리를 구현하였다.
+
+나는 리액트 Suspense가 비동기 코드를 동기적으로 동작하게끔 만들어줄 것이라 생각했으나, 비동기적인 데이터가 불러와지기 전까지 fallback을 보여주는 역할만을 수행하였다.
+
+이에 대한 해결 방법을 [해당 포스팅](https://sangmin802.github.io/Study/Think/suspense/)에서 찾았고, request시 반환되는 Promise의 결과값을 반환하는 함수를 따로 정의해 선언적으로 비동기를 처리하고자 하였다.
+
+<br>
+
+### 해결 - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)
+
+- [getAsyncValue 함수에 Request 결과를 인수로 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx#L9)
+- getAsyncValue 함수는 [status에 따라 다른 결과값을 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L22)
+	
+- 함수가 실행될 당시 status는 pending
+    - [프로미스 후속 작업 함수 throw](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L24)
+    - throw를 하게되면 React는 해당 컴포넌트에서 발생한 중단을 감지하고 렌더링 중지
+    - [후속 작업 함수 실행](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L16)
+- 프로미스 후속 작업 실행 후, [비동기 처리 성공 시 처리 결과를 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L12)
+- 프로미스 후속 작업 실행 후, [비동기 처리 실패 시 error 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L16)
+
+<br>
+
+## 3. 이미지 로딩되는 동안 image에 적용된 style이 지워지는 문제
+
+### 문제 - 이미지가 로딩되는 동안 img에 적용된 style 제거
+
+![](https://velog.velcdn.com/images/dev-redo/post/75bd03bb-0944-429d-b731-f6b7e72cfff4/image.png)
+
+[초창기 구현](https://github.com/dev-redo/wanted-pre-onboarding-fe/commit/b966578b20864f7f2ef4b3334353035cc931bd51) 당시 초기 로딩 상태를 false로 이미지 src 상태가 업데이트되면 true로 변경해주는 식으로 구현했다. 
+
+로딩 전일 시에는 이미지 대신 회색 박스를 보여주었고, 로딩 이후에는 이미지 src를 보여주었다.
+
+처음에는 Feed Image에 assets 폴더에 있는 이미지를 넣어뒀는데, 그 당시 로딩되기 전 회색박스가 잘 보였다. 하지만 request한 이미지를 넣어줄 때는 img에 적용된 style이 지워졌다.
+
+이미지가 로딩되는 시간 동안 style이 제거가 된 것이다.
+
+<br>
+
+### 해결 - [onLoad를 이용해 image style 변경](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/LazyImg.jsx#L17)
+
+- [useLazyImageObserver 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useLazyImageObserver.jsx#L20)을 이용해 타겟이 observer되면 src 상태 업데이트
+- [LazyImg 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/LazyImg.jsx)에서는 isLoad의 초기값을 false로 만들어 회색 박스를 보여줌
+- src가 세팅될 시 onLoad 핸들러를 호출해 isLoad를 true로 변경 -> style 제거
+
+<br>
 
 # 해결 못한 과제
 
+[Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx)에서는 useRef로 이용 시 동작하지 않아서 Ref를 이용한 렌더링 최적화를 구현하지 못했다.
 
-# 과제 하면서 배운 점/느낀 점
+-> Form 컴포넌트가 재렌더링 되지 않으므로 유효성 검증 못함
+
+<br>
+
+# 과제 보완점
+
+![image](https://user-images.githubusercontent.com/69149030/175765545-db983409-6817-4709-8674-843398797118.png)
 
 
+인스타그램 Feed와 Reels의 경우 스타일링만 다를 뿐 인터페이스가 동일하다.
+따라서 게시물 인터페이스를 만든 후 Feed 컴포넌트에 스타일링과 도메인을 주입하는 방식으로 구현하려고 했으나, 시간이 부족해 하지 못했다.
 
-# 과제 하면서 공부한 내용 (optional)
-
+게시물 인터페이스를 이용해 어떻게 Feed 컴포넌트로 구체화 시킬 수 있는지에 대한 고민이 필요하다.
