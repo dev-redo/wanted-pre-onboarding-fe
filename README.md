@@ -360,7 +360,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
-# 추가. Route 기반 코드 스플리팅
+## (추가) Route 기반 코드 스플리팅
 
 - [Main 페이지와 Login 페이지 라우트를 코드 스플리팅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/App.js#L7)
 - 사용자가 다른 페이지로 이동할 때 비동기적으로 해당 페이지 로딩 -> 번들 최적화
