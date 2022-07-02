@@ -1,13 +1,17 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import Form from '../common/Form';
+import Form from '../../common/Form';
 
 export default function LoginForm({ children, ...props }) {
   return <S.Container {...props}>{children}</S.Container>;
 }
 
 LoginForm.Img = function LoginImg() {
-  return <S.Img src={require('../../assets/image/Instargram-logo.png')} />;
+  return (
+    <S.Img
+      src={require('../../../assets/image/Instargram-logo.png')}
+    />
+  );
 };
 
 LoginForm.Form = function LoginForm({ children, ...props }) {
