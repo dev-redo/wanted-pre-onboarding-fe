@@ -1,20 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useUserDispatch } from '../../../modules/context/auth/provider';
+import { useAuth } from '../../../hooks/useAuth';
 
 export default function GlobalNav({ childeren, ...props }) {
-  const navigate = useNavigate();
-  const dispatch = useUserDispatch();
-
-  const logoutCallback = async () => {
-    alert('로그아웃 되었습니다.');
-    dispatch({
-      type: 'LOGOUT',
-    });
-
-    navigate('/login', { replace: true });
-  };
+  const { logoutCallback } = useAuth();
 
   return (
     <S.Nav {...props}>
