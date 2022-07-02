@@ -4,11 +4,8 @@ import { getRegisterUserList } from '../api/auth';
 import { extractIdFromEmail } from '../components/LoginForm/domain/extractIdFromEmail';
 import { findUser } from '../components/LoginForm/domain/findUser';
 
-export function useAuth() {
-  const navigate = useNavigate();
-  const dispatch = useUserDispatch();
-
-  const loginCallback = async (isValid, inputValues) => {
+const getLoginCallback = (navigate, dispatch) => {
+  return async (isValid, inputValues) => {
     if (!isValid) return;
     const registerUserList = await getRegisterUserList();
     const isUserExist = await findUser(inputValues, registerUserList);
@@ -26,8 +23,10 @@ export function useAuth() {
     alert('로그인 성공하였습니다.');
     navigate('/', { replace: true });
   };
+};
 
-  const logoutCallback = async () => {
+const getLogoutCallback = (navigate, dispatch) => {
+  return async () => {
     alert('로그아웃 되었습니다.');
     dispatch({
       type: 'LOGOUT',
@@ -35,6 +34,14 @@ export function useAuth() {
 
     navigate('/login', { replace: true });
   };
+};
+
+export function useAuth() {
+  const navigate = useNavigate();
+  const dispatch = useUserDispatch();
+
+  const loginCallback = getLoginCallback(navigate, dispatch);
+  const logoutCallback = getLogoutCallback(navigate, dispatch);
 
   return { loginCallback, logoutCallback };
 }
