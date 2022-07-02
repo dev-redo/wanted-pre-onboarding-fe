@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Avatar from '../../../common/Avatar';
+import Avatar from '../../Avatar';
 
 function UserInfo({ user }) {
   return (

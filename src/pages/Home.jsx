@@ -4,7 +4,7 @@ import { getFeedData } from '../api/feed';
 import { getAsyncValue } from '../util/getAsyncValue';
 import { useUserState } from '../modules/context/auth/provider';
 import GlobalLayout from '../layout/global';
-import FeedLayout from '../components/Feed';
+import FeedLayout from '../components/common/Feed';
 
 const suspendedFeedData = getAsyncValue(getFeedData());
 

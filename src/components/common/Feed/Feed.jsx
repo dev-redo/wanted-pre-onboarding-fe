@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Base } from '../../styles';
-import { commentField } from '../../constants/fieldData';
-import LazyImg from '../common/LazyImg';
-import Header from './view/Header';
-import Comments from './view/Comments';
-import Like from './view/IconButton/LikeBtn';
-import Send from './view/IconButton/SendBtn';
-import BookMark from './view/IconButton/BookMarkBtn';
-import CommentBtn from './view/IconButton/CommentBtn';
-import EmoteBtn from './view/IconButton/EmoteBtn';
+import { Base } from '../../../styles';
+import { commentField } from '../../../constants/fieldData';
+import LazyImg from '../LazyImg';
+import Header from './Header';
+import Comments from './Comments';
+import Like from './IconButton/LikeBtn';
+import Send from './IconButton/SendBtn';
+import BookMark from './IconButton/BookMarkBtn';
+import CommentBtn from './IconButton/CommentBtn';
+import EmoteBtn from './IconButton/EmoteBtn';
 
 export default function Feed({ children, ...props }) {
   return <S.Container {...props}>{children}</S.Container>;

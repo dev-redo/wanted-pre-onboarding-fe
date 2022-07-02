@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useUserState } from '../../modules/context/auth/provider';
+import { useUserState } from '../../../modules/context/auth/provider';
 import Feed from './Feed';
-import { convertNationalNumbers } from '../../util/convertNationalNumbers';
+import { convertNationalNumbers } from '../../../util/convertNationalNumbers';
 
 export default function FeedLayout({ feed }) {
   const { userId } = useUserState();
