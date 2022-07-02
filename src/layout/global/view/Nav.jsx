@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useUserDispatch } from '../../../modules/context/auth';
+import { useUserDispatch } from '../../../modules/context/auth/provider';
 
 export default function GlobalNav({ childeren, ...props }) {
   const navigate = useNavigate();

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Base } from '../../styles';
+import { commentField } from '../../constants/fieldData';
 import LazyImg from '../common/LazyImg';
 import Header from './view/Header';
 import Comments from './view/Comments';
@@ -78,7 +79,7 @@ Feed.Input = function FeedInput({
   ...props
 }) {
   const [userComment, setUserComment] = useState('');
-  let isSubmit = userComment !== '';
+  let isSubmit = !!userComment;
 
   const submitHandler = e => {
     e.preventDefault();
@@ -90,9 +91,7 @@ Feed.Input = function FeedInput({
     <S.Input {...props} onSubmit={submitHandler}>
       <EmoteBtn />
       <input
-        name="comment"
-        placeholder="댓글 달기"
-        type="text"
+        {...commentField}
         value={userComment}
         onChange={({ target: { value } }) => setUserComment(value)}
       />

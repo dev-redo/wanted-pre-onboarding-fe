@@ -17,10 +17,6 @@ export async function useHttp(reqConfig) {
     body: body ? JSON.stringify(body) : null,
   });
 
-  if (!res.ok) {
-    throw new Error('Failed to request data');
-  }
-
   const payload = await res.json();
   return payload;
 }

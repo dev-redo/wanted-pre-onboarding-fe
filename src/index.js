@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './modules/context/auth';
+import { UserProvider } from './modules/context/auth/provider';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyles from './styles/globalStyles';

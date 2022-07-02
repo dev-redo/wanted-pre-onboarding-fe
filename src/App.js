@@ -9,9 +9,7 @@ const Home = lazy(() => import('./pages/Home'));
 
 function App() {
   return (
-    <ErrorBoundary
-      fallback={<Error>페이지 로드 중 문제가 발생했습니다!</Error>}
-    >
+    <ErrorBoundary FallbackComponent={Error}>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route index element={<Home />} />

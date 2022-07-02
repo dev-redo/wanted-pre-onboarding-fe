@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUserState } from '../../modules/context/auth';
+import { useUserState } from '../../modules/context/auth/provider';
 import Feed from './Feed';
 import { convertNationalNumbers } from '../../util/convertNationalNumbers';
 

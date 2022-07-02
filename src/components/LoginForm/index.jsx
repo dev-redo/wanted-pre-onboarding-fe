@@ -1,8 +1,7 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { loginField } from '../../constants/fieldData';
-import { useUserDispatch } from '../../modules/context/auth';
-
+import { useUserDispatch } from '../../modules/context/auth/provider';
 import { useNavigate } from 'react-router-dom';
 import { getRegisterUserList } from '../../api/auth';
 import { findUser } from './domain/findUser';

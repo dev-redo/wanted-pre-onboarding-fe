@@ -14,3 +14,11 @@ export const loginField = [
     regex: REGEX_PW,
   },
 ];
+
+export const commentField = [
+  {
+    name: 'comment',
+    placeholder: '댓글 달기',
+    type: 'text',
+  },
+];
