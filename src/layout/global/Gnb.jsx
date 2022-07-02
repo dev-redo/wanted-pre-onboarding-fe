@@ -5,7 +5,9 @@ import GlobalNav from './Nav';
 export default function GnbLayout({ childeren, ...props }) {
   return (
     <S.Container>
-      <S.Img src={require('../../../assets/image/Instargram-logo.png')} />
+      <S.Img
+        src={require('../../assets/image/Instargram-logo.png')}
+      />
       <S.Input placeholder="검색" {...props} />
       <GlobalNav />
     </S.Container>
