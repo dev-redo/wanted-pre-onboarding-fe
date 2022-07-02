@@ -15,10 +15,8 @@ export const loginField = [
   },
 ];
 
-export const commentField = [
-  {
-    name: 'comment',
-    placeholder: '댓글 달기',
-    type: 'text',
-  },
-];
+export const commentField = {
+  name: 'comment',
+  placeholder: '댓글 달기',
+  type: 'text',
+};
