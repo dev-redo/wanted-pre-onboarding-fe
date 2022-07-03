@@ -168,20 +168,20 @@ src
 │
 ├── component                        // 아토민컴포넌트와 컨테이너 파일들
 │    ├── common                      // 공통적으로 사용되는 컴포넌트들(ex. Feed, Avatar, LazyImg)
-│    └── login                   	 // 로그인 페이지에서 사용하는 컴포넌트 모음
-│	 	 └── form					 // 로그인 Form 컴포넌트
+│    └── login                       // 로그인 페이지에서 사용하는 컴포넌트 모음
+│	 └── form		     // 로그인 Form 컴포넌트
 │
 ├── layout                           // 어플리케이션 레이아웃
 │    └── global                      // 전역 레이아웃
 │
 ├── hooks                            // 커스텀 훅
-│    ├── useAuth.jsx				 // login, logout 콜백함수를 모아둔 훅
+│    ├── useAuth.jsx		     // login, logout 콜백함수를 모아둔 훅
 │    ├── useHttp.jsx                 // httpRequset 훅
 │    └── useLazyImageObserver.jsx    // Intersection Observer API를 이용한 Lazy Loading 훅
 │
 ├── module                           // 전역 상태 관리 atom, selector, context 모임
 │    └── context
-│        └── auth                	 // 로그인 인증 관리 컨텍스트
+│        └── auth                    // 로그인 인증 관리 컨텍스트
 │    		├── provider.jsx
 │        	└── reducer.jsx
 │
