@@ -148,6 +148,8 @@ npm start
 <br>
 
 
+---
+
 # 파일 구조
 
 ```
@@ -164,21 +166,24 @@ src
 │   ├── Home.jsx                     // 인스타그램 메인 페이지
 │   └── Login.jsx                    // 인스타그램 Login 페이지
 │
-├── component                        // 컴포넌트와 컨테이너 파일들
-│    ├── common                      // 공통적으로 사용되는 컴포넌트들(ex Avatar, LazyImg)
-│    ├── Feed                        // 인스타그램 Feed 컴포넌트
-│    └── LoginForm                   // 인스타그램 Login Form 컴포넌트
+├── component                        // 아토민컴포넌트와 컨테이너 파일들
+│    ├── common                      // 공통적으로 사용되는 컴포넌트들(ex. Feed, Avatar, LazyImg)
+│    └── login                   	 // 로그인 페이지에서 사용하는 컴포넌트 모음
+│	 	 └── form					 // 로그인 Form 컴포넌트
 │
 ├── layout                           // 어플리케이션 레이아웃
 │    └── global                      // 전역 레이아웃
 │
 ├── hooks                            // 커스텀 훅
-│    ├── useHttp.jsx                 // httpRequset 커스텀 훅
+│    ├── useAuth.jsx				 // login, logout 콜백함수를 모아둔 훅
+│    ├── useHttp.jsx                 // httpRequset 훅
 │    └── useLazyImageObserver.jsx    // Intersection Observer API를 이용한 Lazy Loading 훅
 │
 ├── module                           // 전역 상태 관리 atom, selector, context 모임
 │    └── context
-│        └── auth.jsx                // 로그인 인증 관리 컨텍스트
+│        └── auth                	 // 로그인 인증 관리 컨텍스트
+│    		├── provider.jsx
+│        	└── reducer.jsx
 │
 ├── api                              // fetch를 이용하여 통신 로직을 담당
 │    └── auth.js                     // 가입된 유저 정보 Request
@@ -199,6 +204,9 @@ src
 ```
 
 <br>
+
+
+---
 
 
 # 기능
@@ -242,20 +250,22 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 <br>
 
 
-- [로그인 Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/tree/main/src/components/LoginForm)
+- [로그인 Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/login/form/index.jsx)
   - common 컴포넌트인 [Form](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx)을 
-    - Form 컴포넌트에 email과 pw Input에 필요한 [Field Data 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/LoginForm/index.jsx#L38)
-    - 로그인 처리를 담당하는 [Submit Callback 전달](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/LoginForm/index.jsx#L15)
-  - Form 컴포넌트에서 전달받은 [Field Data를 통해 email, password Input 구성](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L18)
-  - Form 컴포넌트는 Submit Button이 존재하며 email, password Input이 [모두 유효성을 통과할 시 활성화](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx#L41)
+    - Form 컴포넌트에 email과 pw Input에 필요한 Field Data 전달
+    - 로그인 처리를 담당하는 Submit Callback 전달
+  - Form 컴포넌트에서 전달받은 Field Data를 통해 email, password Input 구성
+  - Form 컴포넌트는 Submit Button이 존재하며 email, password Input이 모두 유효성을 통과할 시 활성화
   - Submit button을 클릭 시, 전달받은 SubmitCallback을 통해 로그인 처리
-    - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 등록된 유저 list json 파일 request
+    - public/data/registerUserList.json에 등록된 유저 list json 파일 request
     - 존재하지 않는 유저일 시 로그인 실패 처리
     - 존재하는 유저일 시, 유저 Id와 토큰을 Local storage에 저장한 후 메인 페이지로 Redirect
   <br>
   (Form 컴포넌트는 트러블 슈팅 파트에서 더 자세히 다루고자 한다.)
 
 <br>
+
+---
 
 ## 2. GNB(Global Nabigation Bar)
 
@@ -276,13 +286,14 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 
 <br>
 
-- [GNB](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Gnb.jsx)
+- [GNB](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/Gnb.jsx)
   - sticky & space-betwwen
   - 모바일(320px)일 시 Search 창 사라짐
   - 마지막 아이콘 Logout 버튼
 
 <br>
 
+---
 
 ## 3. Routing
 
@@ -297,12 +308,15 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 </details>
 
 
-- [로그인 시 Local Storage에 유저 Id와 토큰 저장 -> 메인 페이지로 Redirect](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Nav.jsx#L12)
-- [로그아웃 시 Local Storage에 유저 Id와 토큰 삭제 -> 로그인 페이지로 Redirect](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Nav.jsx#L11)
+- 로그인 시 Local Storage에 유저 Id와 토큰 저장 -> 메인 페이지로 Redirect
+- 로그아웃 시 Local Storage에 유저 Id와 토큰 삭제 -> 로그인 페이지로 Redirect
 
+* 로그인, 로그아웃 처리 함수는 [useAuth 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useAuth.jsx)에 모아둠
 * react-router-dom의 useNavigate을 이용해 Redirect 구현
 
 <br>
+
+---
 
 
 ## 4. 인스타그램 Feed 구현
@@ -330,7 +344,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 </details>
 
 - [Main 페이지](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/pages/Home.jsx)
-  - [GNB 모바일 대응](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/view/Gnb.jsx)
+  - [GNB 모바일 대응](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/Gnb.jsx)
   - [public/data/registerUserList.json](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/public/data/registerUserList.json)에 인스타그램 Feed 데이터를 request
   - [request 처리 결과값을 반환하는 getAsyncValue 함수](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L8)를 이용해 비동기 처리
     - 인자로 [feed 데이터 요청 api](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/api/auth.js#L3) 결과값(promise) 전달
@@ -343,12 +357,14 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
-- [Feed 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/tree/main/src/components/Feed)
+- [Feed 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Feed/index.jsx)
+	
+    - 다른 페이지에서도 사용할 것이라 판단해 common 폴더에 넣어줌
   - 메인 페이지에서 전달받은 Feed 정보를 이용해 렌더링
   - Feed 크기는 [전역 style](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/styles/index.js#L14)을 이용해 모바일 대응
     - 컨테이너 크기는 기본 max-width 45rem
     - 모바일(320px)일 시 max-width 100%로 변경
-  - Enter키 & 마우스 클릭으로 [댓글 게시](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/Feed/Feed.jsx#L83)
+  - Enter키 & 마우스 클릭으로 [댓글 게시](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Feed/Feed.jsx#L91)
     - Feed의 Comments에 작성한 댓글 추가
     - 댓글 게시 후 Input 초기화
   - Feed Image 반응형 구현(이미지 비율 유지)
@@ -367,6 +383,8 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 - 사용자가 다른 페이지로 이동할 때 비동기적으로 해당 페이지 로딩 -> 번들 최적화
 
 <br>
+
+---
 
 # 트러블슈팅
 
@@ -409,6 +427,8 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
+---
+
 ## 2. 비동기를 처리해주지 못하는 리액트 Suspense
 
 
@@ -439,6 +459,8 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
+---
+
 ## 3. 이미지 로딩되는 동안 image에 적용된 style이 지워지는 문제
 
 ### 문제 - 이미지가 로딩되는 동안 img에 적용된 style 제거
@@ -463,6 +485,27 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
+---
+
+
+## 4. Login, Logout 처리 로직 분리 - [useAuth 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useAuth.jsx)
+
+hook은 함수 컴포넌트 최상단에서만 쓸 수 있고, 이벤트 핸들러로 전달해주지 못한다.
+따라서 초기에는 Login, Logout 처리 로직을 컴포넌트에 넣어두었다.
+
+이 로직들을 따로 분리시킬 방법을 찾던 중, hook 자체는 핸들러로 전달해주지 못하지만 hook에서 반환하는 함수들은 훅이 아니므로 전달할 수 있다는 것을 발견하였다.
+
+그래서 [useAuth 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useAuth.jsx)을 만들어 login, logout 콜백함수 모아두었다.
+
+### login 처리 로직 사용 - [login form](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/login/form/index.jsx#L7)
+
+
+### logout 처리 로직 사용 - [gnb](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/Nav.jsx#L6)
+
+<br>
+
+---
+
 # 해결 못한 과제
 
 [Form 컴포넌트](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/common/Form.jsx)에서는 useRef로 이용 시 동작하지 않아서 Ref를 이용한 렌더링 최적화를 구현하지 못했다.
@@ -471,7 +514,24 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
-# 과제 보완점
+---
+
+# 과제 보완점 & TODO
+
+## 1. 비동기, 이벤트 핸들러를 처리해주지 못하는 ErrorBoundary
+
+에러를 처리해주는 ErrorBoundary 컴포넌트는 비동기, 이벤트 핸들러로 전달한 함수에서 발생한 에러를 처리해주지 못한다.
+
+따라서 만약 존재하지 않는 경로로 request할 시 발생하는 404에러를 핸들링하지 못해 앱이 다운되게 된다.
+
+React-Query 라이브러리를 이용하면 이 문제를 해결할 수 있으나,
+직접 ErrorBoudary를 이용해 이벤트 핸들러와 비동기를 처리하는 에러 핸들링 컴포넌트를 만들어보고자 한다.
+
+[참고할 사이트 - ErrorBoundary와 비동기 에러 핸들링](https://sangmin802.github.io/Study/Think/error%20boundary/)
+
+<br>
+
+## 2. 인터페이스가 동일한 게시물 컴포넌트들?
 
 ![image](https://user-images.githubusercontent.com/69149030/175775163-1f002c72-ac3c-4d8f-b041-2098fef45d25.png)
 
