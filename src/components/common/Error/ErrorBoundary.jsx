@@ -12,11 +12,10 @@ export default class ErrorBoundary extends React.Component {
     return { error };
   }
 
-  componentDidCatch(error, errorInfo) {
-    logErrorToMyService(error, errorInfo);
-  }
-
   componentDidUpdate(prev) {
+    if (this.state.error === null) {
+      return;
+    }
     if (prev.keys !== this.props.keys) {
       this.resetErrorBoundary();
     }
@@ -30,7 +29,7 @@ export default class ErrorBoundary extends React.Component {
     const { children, renderFallback } = this.props;
     const { error } = this.state;
 
-    if (error !== null) {
+    if (error != null) {
       return renderFallback({
         error,
         reset: this.resetErrorBoundary,
