@@ -31,7 +31,7 @@ npm start
 
 # :: 과제 안내
 
----
+
 
 ## Assignment 1 - `Login`
 
@@ -148,7 +148,7 @@ npm start
 <br>
 
 
----
+
 
 # 파일 구조
 
@@ -168,20 +168,20 @@ src
 │
 ├── component                        // 아토민컴포넌트와 컨테이너 파일들
 │    ├── common                      // 공통적으로 사용되는 컴포넌트들(ex. Feed, Avatar, LazyImg)
-│    └── login                   	 // 로그인 페이지에서 사용하는 컴포넌트 모음
-│	 	 └── form					 // 로그인 Form 컴포넌트
+│    └── login                       // 로그인 페이지에서 사용하는 컴포넌트 모음
+│	 └── form		     // 로그인 Form 컴포넌트
 │
 ├── layout                           // 어플리케이션 레이아웃
 │    └── global                      // 전역 레이아웃
 │
 ├── hooks                            // 커스텀 훅
-│    ├── useAuth.jsx				 // login, logout 콜백함수를 모아둔 훅
+│    ├── useAuth.jsx		     // login, logout 콜백함수를 모아둔 훅
 │    ├── useHttp.jsx                 // httpRequset 훅
 │    └── useLazyImageObserver.jsx    // Intersection Observer API를 이용한 Lazy Loading 훅
 │
 ├── module                           // 전역 상태 관리 atom, selector, context 모임
 │    └── context
-│        └── auth                	 // 로그인 인증 관리 컨텍스트
+│        └── auth                    // 로그인 인증 관리 컨텍스트
 │    		├── provider.jsx
 │        	└── reducer.jsx
 │
@@ -206,7 +206,7 @@ src
 <br>
 
 
----
+
 
 
 # 기능
@@ -265,7 +265,7 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 
 <br>
 
----
+
 
 ## 2. GNB(Global Nabigation Bar)
 
@@ -293,7 +293,7 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 
 <br>
 
----
+
 
 ## 3. Routing
 
@@ -316,7 +316,7 @@ https://user-images.githubusercontent.com/69149030/175649385-574f9323-6b13-4cca-
 
 <br>
 
----
+
 
 
 ## 4. 인스타그램 Feed 구현
@@ -384,7 +384,7 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
----
+
 
 # 트러블슈팅
 
@@ -425,9 +425,19 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 위의 로직의 경우 Form 컴포넌트를 사용하는 곳에서 Field Data와 Submit Callback을 전달하기만 하면 되므로 선언적이다는 장점이 있다.
 
+<details>
+<summary>상세 설명</summary>
+<div markdown="1">
+
+[velog 설명 참고](https://velog.io/@dev-redo/Form-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8)
+
+</div>
+</details>
+
+
 <br>
 
----
+
 
 ## 2. 비동기를 처리해주지 못하는 리액트 Suspense
 
@@ -457,9 +467,18 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 - 프로미스 후속 작업 실행 후, [비동기 처리 성공 시 처리 결과를 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L12)
 - 프로미스 후속 작업 실행 후, [비동기 처리 실패 시 error 반환](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/util/getAsyncValue.js#L16)
 
+<details>
+<summary>상세 설명</summary>
+<div markdown="1">
+
+[velog 설명 참고](https://velog.io/@dev-redo/%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%9D%98-%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%B0%A9%EC%8B%9D%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-Suspense%EB%A1%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-Pending-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0)
+
+</div>
+</details>
+
 <br>
 
----
+
 
 ## 3. 이미지 로딩되는 동안 image에 적용된 style이 지워지는 문제
 
@@ -485,7 +504,6 @@ https://user-images.githubusercontent.com/69149030/175607567-273e3b3b-0b6f-4e2c-
 
 <br>
 
----
 
 
 ## 4. Login, Logout 처리 로직 분리 - [useAuth 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useAuth.jsx)
@@ -497,14 +515,19 @@ hook은 함수 컴포넌트 최상단에서만 쓸 수 있고, 이벤트 핸들�
 
 그래서 [useAuth 훅](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/hooks/useAuth.jsx)을 만들어 login, logout 콜백함수 모아두었다.
 
-### login 처리 로직 사용 - [login form](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/components/login/form/index.jsx#L7)
+<details>
+<summary>상세 설명</summary>
+<div markdown="1">
 
+[velog 설명 참고](https://velog.io/@dev-redo/React-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-hook%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%96%B4-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%A1%9C%EC%A7%81-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0)
 
-### logout 처리 로직 사용 - [gnb](https://github.com/dev-redo/wanted-pre-onboarding-fe/blob/main/src/layout/global/Nav.jsx#L6)
+</div>
+</details>
+
 
 <br>
 
----
+
 
 # 해결 못한 과제
 
@@ -514,7 +537,7 @@ hook은 함수 컴포넌트 최상단에서만 쓸 수 있고, 이벤트 핸들�
 
 <br>
 
----
+
 
 # 과제 보완점 & TODO
 
